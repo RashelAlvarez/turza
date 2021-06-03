@@ -17,6 +17,11 @@ Productos
 
 @section('contenido')
 <div class="container-fluid">
+    @if (session('exito'))
+    <div class="alert alert-success">
+      {{ session('exito') }}
+    </div>
+    @endif
     @if  (auth()->user()->hasRoles(['Administrador', 'Operador']))
     <button type="button"  class="btn btn-warning mb-3" data-toggle="modal" data-target="#agregarProducto">
         Agregar Productos

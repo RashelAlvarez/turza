@@ -84,15 +84,9 @@ Route::get('/cart/checkout', 'CartController@checkout')->name('cart.checkout');
 Route::post('/cart/remove', 'CartController@removeitem')->name('cart.removeitem');
 Route::post('/cart/clear', 'CartController@clear')->name('cart.clear');
 
-Route::resource('/pedidos', 'PedidosController');
+Route::resource('/pedidos', 'PedidosController');/* 
+Route::put('actualizar-usuario/{usuario}', 'UsuarioController@update'); */
 Route::get('/pedidos/{pedido}/mostrarOrden', 'PedidosController@mostrarOrden')->name('mostrarOrden');
-/* Route::get('/pedidos/{pedido}/mostrarOrden', function () {
-    if( auth()->user() ){ //se valida si esta logueado
-        if(   auth()->user()->rol =='1' &&  auth()->user()->rol =='2'){ //se valida el tipo de usuario
-            return redirect('/pedidos/{pedido}/mostrarOrden');
-        }else
-        return abort(404, 'No encontrado');
-        
-    }
-}); */
+
+
  

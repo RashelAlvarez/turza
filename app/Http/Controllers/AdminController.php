@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Producto;
 use App\User;
 use App\Pedido;
+use Spatie\Analytics\Period;
+use Analytics;
 class AdminController extends Controller
 {
     /**
@@ -30,9 +32,9 @@ class AdminController extends Controller
         $users=User::count();
         $pedidos=Pedido::count();
         
-
+        $analyticsData = Analytics::fetchMostVisitedPages(Period::days(7));
         $productos= Producto::all();
-       return view('admin.material.materialinicio', compact('productos', 'users', 'pedidos'));
+       return view('admin.material.materialinicio', compact('productos', 'users', 'pedidos', 'analyticsData'));
     }
 
     /**

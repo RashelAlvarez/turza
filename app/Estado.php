@@ -15,7 +15,7 @@ class Estado extends Model
 
 
     public function pedidos(){
-        return $this->belongsTo(Pedido::class); //devuelve un solo objeto
+        return $this->hasOne(Pedido::class); //devuelve un solo objeto
         //hasMany devuelve un array de objetos relacionados
     }
 

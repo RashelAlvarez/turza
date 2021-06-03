@@ -86,7 +86,7 @@ class ClientesController extends Controller
         return view( 'admin.material.carrito'    , compact('filename'));
        /*  return Storage::response("$filename"); */
     }
-
+ 
     /**
      * Show the form for editing the specified resource.
      *

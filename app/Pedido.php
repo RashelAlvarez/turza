@@ -37,14 +37,15 @@ class Pedido extends Model
         //hasMany devuelve un array de objetos relacionados
     }
    
-    public function estado(){
-        return $this->hasOne(Estado::class); //devuelve un solo objeto
-        //hasMany devuelve un array de objetos relacionados
-    }
      
+     
+    public function estado(){
+        return $this->belongsTo('App\Estado', 'estado');
+    }
+
     public function orden( array $request){
 
-        dd($request);
+       
         foreach ($request as $item){
              if ($this->pedido->user_id === $item){
              

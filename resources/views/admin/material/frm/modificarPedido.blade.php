@@ -1,4 +1,8 @@
-<div class="modal" id="frmModificarPedido" tabindex="-1" role="dialog" aria-hidden="true">
+
+   
+ 
+
+<div class="modal" id="frmModificarPedido{{$pedido->id}}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -7,60 +11,74 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form class="form"  method="post" {{-- action="{{url('/pedidos/'.$pedidos->id)}}" --}}>
+        <form class="form"  method="post" action="{{route('pedidos.update', $pedido->id)}}">
             {!! csrf_field()  !!}
           
             {{method_field('PATCH')}}
             <div class="modal-body" id="body">
             
             
-                <div class="col-sm-12">
+                {{-- <div class="col-sm-12">
                     <div class="form-group">
                         <input type="text" class="form-control" name="user_id"  placeholder="Usuario" value="" disabled>
                         <span class="text-danger">{!! $errors->first('usuario', '<span class=error>:message</span>') !!}</span>
                     </div>
-                  </div>
+                  </div> --}}
                   <div class="col-sm-12">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="nro_orden"  placeholder="Orden" value="" disabled>
+                      <label class="bmd-label-floating"># Orden</label>
+                    <input type="text" class="form-control" name="nro_orden" id="nro_orden" value="{{$pedido->nro_orden}}"    disabled>
                         <span class="text-danger">{!! $errors->first('orden', '<span class=error>:message</span>') !!}</span>
                      </div>
                   </div>
                   <div class="col-sm-12">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="sub_total"  placeholder="Sub Total" value="" disabled>
+                      <label class="bmd-label-floating">Total</label>
+                    <input type="text" class="form-control" name="sub_total" id="sub_total" value="{{$pedido->sub_total}}"   disabled>
                         <span class="text-danger">{!! $errors->first('sub_total', '<span class=error>:message</span>') !!}</span>
                     </div>
                   </div>
+              
             
                 
                 <div class="col-sm-12">
-                    <div class="form-group"> 
-                  <select class="form-control" id="role_id" name="role_id" required>
-                      <option selected disabled>--Tipo de Usuario--</option>
+                  <div class="form-group"> 
+                  <select class="form-control" id="estado" name="estado"   required>
+{{--             {{dd($item->id)}} --}}
+                {{--       @foreach($item as $items)
+                      @if(isset($items))
+                      <option selected value="{{$items->id}}">{{$items->nombre}}</option>
+                     
+                      @endif
                       
-                
-                    </select>
-                    <span class="text-danger">{!! $errors->first('role_id', '<span class=error>Seleccione una opción</span>') !!}</span>
-                    </div>
-                    </div>
-                  
+                      @endforeach --}}
+             
 
+                      @foreach ($estado as $item)
+                    {{--   <option  value="{{$item->id}}">{{$item->nombre}}</option> --}}
+                    <option value="{{$item->id}}" @if ($pedido->Estado== $item) selected 
+                      @endif 
+                      > {{$item->nombre }}</option>
+                   {{--    <option value="{{$item->id}}" 
+                        @if( (int) $item->id === (int) $pedido->estado) selected='selected' @endif>
+                         {{$item->nombre}} </option> --}}
+                      @endforeach
+                    </select>
+                    <span class="text-danger">{!! $errors->first('estado', '<span class=error>Seleccione una opción</span>') !!}</span>
+                  </div>
+                </div>
+                  
+           
         
 
 
 
-                  @if (session('exito'))
-                  <div class="alert alert-success">
-                    {{ session('exito') }}
-                  </div>
-                  @endif
-                    
+                 
              
             </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button type="submit"  class="btn btn-success">Guardar</button>
+            <button type="submit"  class="btn btn-success update">Actualizar</button>
             </div>
 
 
@@ -70,4 +88,5 @@
     </div>
   </div>
 
- 
+
+

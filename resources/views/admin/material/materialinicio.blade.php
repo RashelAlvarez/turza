@@ -72,7 +72,7 @@ Turza | Inicio
         </div>
     </div>
 </div>
-
+{{$analyticsData}}
 
 
 @endsection

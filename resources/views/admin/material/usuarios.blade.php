@@ -61,8 +61,8 @@ Turza | Usuarios
             {{--   <a type="button" href="{{route('/usuarios.edit/'.$user->id.'/edit')}}"  id="modificarUsuario" data-toggle="modal" data-target="#frmModificar" > <span class="material-icons yellow">
                 create
                 </span></a> --}}
-                <a type="button" href="{{url('/usuarios/'.$user->id.'/edit')}}"  id="modificarUsuario" data-toggle="modal" data-target="#frmModificarUsuario" >
-                  <span class="material-icons yellow">
+                <a type="button" href="{{url('/usuarios/'.$user->id.'/edit')}}"  rel="tooltip" title="Modificar" class="btn btn-warning btn-sm" id="modificarUsuario" data-toggle="modal" data-target="#frmModificarUsuario" >
+                  <span class="material-icons ">
                     create
                     </span>
                   </a>
@@ -70,9 +70,9 @@ Turza | Usuarios
                 <form method="post" action="{{url('/usuarios/'.$user->id)}}" style="display:inline">
                   {{ csrf_field() }}
                   {{method_field('DELETE')}}
-                <button type="submit" rel="tooltip" title="Eliminar" class="btn btn-danger btn-link btn-sm">
+                <a type="submit" rel="tooltip" title="Eliminar" class="btn btn-danger  btn-sm">
                   <i class="material-icons">close</i>
-                </button>
+                </a>
               </form>
 
                {{--  <form method="post" action="{{url('/usuario/'.$usuario->id)}}" style="display:inline">

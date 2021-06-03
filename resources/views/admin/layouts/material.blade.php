@@ -262,7 +262,7 @@
   <script src="{{asset('/js/core/material-dashboard.js')}}" type="text/javascript"></script>
 {{--   <script src="{{asset('/js/core/demo.js')}}"></script> --}}
   <script src="{{asset('/js/core/core.min.js')}}"></script>
-
+  <script src="{{asset('/js/app.js')}}"></script>
 
   <script type="text/javascript" charset="utf-8">
     $(document).ready(function() {

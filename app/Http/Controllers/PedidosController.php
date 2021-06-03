@@ -11,6 +11,7 @@ use App\User;
 use Cart;
 use App\ItemPedidos; 
 use App\Notifications\Pedidos;
+use App\Estado;
 use Illuminate\Support\Facades\Notification;
 use \Illuminate\Notifications\Notifiable;
 
@@ -58,7 +59,7 @@ class PedidosController extends Controller
                 ->join('users', 'pedidos.user_id', '=', 'users.id')
                 ->where('users.id', auth()->user()->id)
                 ->get(); */ 
-            
+            $estado=Estado::all();
             $pedidos=DB::table('pedidos')
             ->join('item_pedidos', 'pedidos.nro_orden', '=', 'item_pedidos.id_detalle')
             ->join('users', 'pedidos.user_id', '=', 'users.id')
@@ -85,7 +86,7 @@ class PedidosController extends Controller
             ->get();
            /*  dd($pedidos2); */
  /*    dd($pedidos);  */
-        return view('admin.material.pedidos' , compact('pedidos', 'pedidos2', 'pedidos3')); 
+        return view('admin.material.pedidos' , compact('pedidos', 'pedidos2', 'pedidos3', 'estado')); 
      
     }
 
@@ -252,12 +253,16 @@ class PedidosController extends Controller
      */
     public function edit($id)
     {
+      /*   $pedido = Pedido::find($id);
+     
+      return Response::json($pedido); */
         
-        $pedidos= Pedido::findOrFail($id);
-      
-        return view('admin.material.frm.modificarPedido', compact('pedidos'));
-        
+        $pedido = Pedido::findOrFail($id); 
+        $estado = Estado::select('id', 'nombre')->get(); 
 
+        return view('admin.material.frm.modificarPedido', compact( 'estado')); 
+     
+        
     }
 
     /**
@@ -270,6 +275,15 @@ class PedidosController extends Controller
     public function update(Request $request, $id)
     {
         //
+       
+    $pedido = Pedido::findOrFail($id);
+    
+    $pedido->estado = $request->estado;
+    if ($pedido->save()){
+        return redirect('pedidos')->with('exito', 'Datos actualizados exitosamente.');
+    }  
+
+
     }
 
     /**

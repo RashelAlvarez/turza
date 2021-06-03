@@ -39,7 +39,7 @@
                   <div class="col-sm-12">
                     <div class="form-group">
                         <label class="bmd-label-floating">Impuesto</label>
-                        <input type="text" class="form-control" name="impuesto"  required  value="{{old('impuesto')}}">
+                        <input type="text" class="form-control" name="impuesto" required  value="{{old('impuesto')}}">
                         <span class="text-danger">{!! $errors->first('impuesto', '<span class=error>:message</span>') !!}</span>
                     </div>
                   </div>
@@ -57,11 +57,7 @@
 
 
 
-                  @if (session('exito'))
-                  <div class="alert alert-success">
-                    {{ session('exito') }}
-                  </div>
-                  @endif
+                
                     
              
             </div>

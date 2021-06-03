@@ -53,22 +53,24 @@ class ProductAdController extends Controller
     public function store(Request $request)
     {
         //
+
 /* 
+
         dd($request->all()); */
-        $user= Producto::create([
+        $producto= Producto::create([
 
             "nombre" => $request->input('nombre'),
             "descripcion" => $request->input('descripcion'),
             "precio" => $request->input('precio'),
             'impuesto' => $request->input('impuesto'),
-       
-           'file' => $request->file('file')->storeAs('productos', $request->file->getClientOriginalName()),
+            'image' => $request->file('file')->storeAs('public/images', $request->file->getClientOriginalName()),
+         /*   'image' => $request->file('file')->storeAs('public/images', $request->file->getClientOriginalName()), */
             "created_at" => Carbon::now(),
             "updated_at" => Carbon::now(),
           
         ]);  
 
-        
+        return redirect('productad.index')->with('exito', 'Se ha agregado un nuevo producto exitosamente.');
     }
 
     /**
