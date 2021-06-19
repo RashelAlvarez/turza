@@ -19,7 +19,7 @@ Turza | Pedido
   {{ session('exito') }}
 </div>
 @endif
-  
+{{-- {{Analytics::fetchMostVisitedPages(Period::days(7))}} --}}
 
 <div class="col-md-12">
     <div class="card">

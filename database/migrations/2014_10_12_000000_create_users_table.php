@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('rif')->unique();
             $table->string('telefono');
             $table->text('direccion');
+            $table->integer('vendedor_id')->nullable();
             $table->string('file')->nullable();
             $table->timestamps();
             

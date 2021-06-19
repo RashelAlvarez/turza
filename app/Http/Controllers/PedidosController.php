@@ -12,6 +12,12 @@ use Cart;
 use App\ItemPedidos; 
 use App\Notifications\Pedidos;
 use App\Estado;
+use Illuminate\Support\Collection;
+/* use Analytics;
+use Spatie\Analytics\Period; */
+
+use Spatie\Analytics\AnalyticsFacade as Analytics;
+use Spatie\Analytics\Period;
 use Illuminate\Support\Facades\Notification;
 use \Illuminate\Notifications\Notifiable;
 
@@ -34,8 +40,7 @@ class PedidosController extends Controller
             'auth', /* 'orden'  */
         ]);
         $this->middleware('orden', ['only' => ['mostrarOrden']]);
-/* 
-        $this->middleware('orden'); */
+
 
     }
 
@@ -43,22 +48,7 @@ class PedidosController extends Controller
     public function index()
     {
        
- /*        $pedidos = Pedido::with(['user' => function($query){
-        $query->where('users.id', auth()->user()->id);} and 'producto'])->get(); */
 
-        /* $pedidos = Pedido::with(['producto.user'])->get(); */
-
-
-     /*    $pedidos = Pedido::with('producto.user')
-                     
-                     ->where('user_id', auth()->user()->id)  
-                     ->get() ;  */
-         
-        /*  $pedidos = DB::table('pedidos')
-                ->join('productos', 'pedidos.product_id', '=', 'productos.id')
-                ->join('users', 'pedidos.user_id', '=', 'users.id')
-                ->where('users.id', auth()->user()->id)
-                ->get(); */ 
             $estado=Estado::all();
             $pedidos=DB::table('pedidos')
             ->join('item_pedidos', 'pedidos.nro_orden', '=', 'item_pedidos.id_detalle')
@@ -145,23 +135,7 @@ class PedidosController extends Controller
                }
   
 }
- /*    foreach($request->pedido as $row){ */
-        
-    /*          
-         $pedido= Pedido::create([
-            "user_id" => $row['user_id'],
-            "product_id" => $row['producto_id'],
-            
-            "cantidad" => $row['cantidad'],
-            "precio" => $row['precio'],
-            "total"=> Cart::getSubtotal(),
-            "estado" => 'Pendiente',
-             
-            "created_at"=>  Carbon::now(),
-            "updated_at"=>   Carbon::now(),
-            "nro_orden" => $request['nro_orden'],
-            ]); 
-        */
+
      
 
 
@@ -176,15 +150,7 @@ class PedidosController extends Controller
 
                 ]); 
 
-    
-/* }   */
-        
-    
 
-        
-     /*    Notification::send($pedidoNew, new Pedidos($message)); */
-       
-  
    
 
      
@@ -223,16 +189,14 @@ class PedidosController extends Controller
 
 
     public function mostrarOrden($nro_orden){
-      /*   $pedidos = Pedido::findOrFail($nro_orden); */
-       
-       /*  $pedidos = Pedido::findOrFail($nro_orden); */
+ 
         $pedidos=DB::table('item_pedidos')
         ->join('productos', 'item_pedidos.idproducto', '=', 'productos.id')
         ->join('pedidos', 'item_pedidos.id_detalle', '=', 'pedidos.nro_orden')
         ->join('users', 'users.id', '=', 'pedidos.user_id')
         ->select('pedidos.nro_orden', 'productos.nombre', 'item_pedidos.cantidad', 'item_pedidos.total', 
         'productos.precio', 'pedidos.sub_total', 'pedidos.created_at', 'pedidos.estado', 'users.razon_social', 
-        'users.rif', 'users.telefono')
+        'users.rif', 'users.telefono', 'users.direccion')
         ->where('pedidos.nro_orden', $nro_orden)
         ->orderBy('pedidos.nro_orden')
         ->get();
@@ -253,9 +217,7 @@ class PedidosController extends Controller
      */
     public function edit($id)
     {
-      /*   $pedido = Pedido::find($id);
      
-      return Response::json($pedido); */
         
         $pedido = Pedido::findOrFail($id); 
         $estado = Estado::select('id', 'nombre')->get(); 

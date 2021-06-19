@@ -58,6 +58,11 @@ class User extends Authenticatable
 
     }
 
+
+    public function vendedor(){
+        return $this->belongsTo(Vendedor::class);
+
+    }
     public function pedido(){
         return $this->belongsTo(Pedido::class);
 

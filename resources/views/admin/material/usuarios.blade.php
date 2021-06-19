@@ -23,9 +23,12 @@ Turza | Usuarios
 </style>
 
 @if  (auth()->user()->hasRoles(['Administrador']))
-<button type="button" id="crearUsuario" class="btn btn-success mb-3" data-toggle="modal" data-target="#exampleModalLong">
-  Nuevo Usuario
-</button>
+    <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#exampleModalLong">
+      Nuevo Usuario
+    </button>
+
+    <button type="submit" data-toggle="modal" data-target="#crearVendedor"  class="btn btn-success mb-3 ">Nuevo Vendedor</button>
+
 @endif
 
 <div class="col-md-12">
@@ -99,11 +102,9 @@ Turza | Usuarios
 
 
 
-
-
-
 @include('admin/material/frm/usuarios')
 @include('admin/material/frm/modificarUsuario')
+@include('admin/material/frm/vendedor')
 
  
 

@@ -85,8 +85,29 @@ Turza | Carrito de Compra
               <td><p class="text-danger">${{number_format(Cart::getSubTotal(),2)}}</p></td>
             </tr>
 
+
+
            
           </tbody>
+
+          <tr>
+            <td class="float-right">
+
+          {{-- 
+              <div class="col-sm-12 float-right"> --}}
+                <div class="form-group {{ $errors->has('tipo_pago') ? 'has-error' : ''}}"> 
+                  <select class="form-control" id="tipo_pago" name="tipo_pago">
+                      <option selected disabled>--Tipo de Pago--</option>
+                      
+                        {{-- @foreach ($roles as $role)
+                          <option value="{{$role['id']}}">{{$role['nombre']}}</option>
+                        @endforeach --}}
+                    </select>
+                </div>
+              {{-- </div>
+           --}}
+          </td>
+          </tr>
          
           </table>
         {{--   <p><h3> Sub total: ${{number_format(Cart::getSubTotal(),2)}} </h3></p> --}}

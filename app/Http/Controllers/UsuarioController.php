@@ -9,6 +9,7 @@ use App\Role;
 use Illuminate\Http\Request;
 use App\Usuario;
 use App\Producto;
+use App\Vendedor;
 use App\Notifications\Pedidos;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
@@ -49,7 +50,8 @@ class UsuarioController extends Controller
         $users=User::all();
         $roles = Role::all();
         $productos=Producto::all();
-        return view('admin.material.usuarios', compact('users', 'roles', 'productos'));
+        $vendedor=Vendedor::all();
+        return view('admin.material.usuarios', compact('users', 'roles', 'productos', 'vendedor'));
     }
 
     /**

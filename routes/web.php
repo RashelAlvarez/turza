@@ -88,5 +88,6 @@ Route::resource('/pedidos', 'PedidosController');/*
 Route::put('actualizar-usuario/{usuario}', 'UsuarioController@update'); */
 Route::get('/pedidos/{pedido}/mostrarOrden', 'PedidosController@mostrarOrden')->name('mostrarOrden');
 
+Route::resource('/vendedor', 'VendedorController');
 
  

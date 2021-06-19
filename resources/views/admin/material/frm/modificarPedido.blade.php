@@ -1,5 +1,4 @@
 
-   
  
 
 <div class="modal" id="frmModificarPedido{{$pedido->id}}" tabindex="-1" role="dialog" aria-hidden="true">
@@ -55,13 +54,11 @@
              
 
                       @foreach ($estado as $item)
-                    {{--   <option  value="{{$item->id}}">{{$item->nombre}}</option> --}}
-                    <option value="{{$item->id}}" @if ($pedido->Estado== $item) selected 
+             
+                    <option value="{{$item->id}}" @if ($pedido== $item) selected 
                       @endif 
                       > {{$item->nombre }}</option>
-                   {{--    <option value="{{$item->id}}" 
-                        @if( (int) $item->id === (int) $pedido->estado) selected='selected' @endif>
-                         {{$item->nombre}} </option> --}}
+                
                       @endforeach
                     </select>
                     <span class="text-danger">{!! $errors->first('estado', '<span class=error>Seleccione una opción</span>') !!}</span>

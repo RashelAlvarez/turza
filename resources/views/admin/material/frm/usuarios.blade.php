@@ -78,8 +78,19 @@
                       <span class="text-danger">{!! $errors->first('direccion', '<span class=error>:message</span>') !!}</span>
                   </div>
                 </div>
-                
 
+
+                <div class="col-sm-12">
+                  <div class="form-group {{ $errors->has('vendedor') ? 'has-error' : ''}}"> 
+                    <select class="form-control" id="vendedor" name="vendedor">
+                        <option selected disabled>--Vendedor--</option>
+                        
+                          @foreach ($vendedor as $item)
+                            <option value="{{$item['id']}}">{{$item['nombre']}} {{$item['apellido']}}</option>
+                          @endforeach
+                      </select>
+                  </div>
+                </div>
             
                   <div class="col-sm-12">
                     <div class="form-group {{ $errors->has('role_id') ? 'has-error' : ''}}"> 

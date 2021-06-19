@@ -68,14 +68,20 @@ Turza | Pedido
                 <h5 class="modal-title">Razón Social: {{$item->razon_social}}</h5>  
                 <h5 class="modal-title">Rif: {{$item->rif}}</h5>
                 <h5 class="modal-title">Teléfono: {{$item->telefono}}</h5>
+                <h5 class="modal-title">Dirección: {{$item->direccion}}</h5>
         </table>
     
-
+       
         
         
       </div>
+    
     </div>
+   
   </div>
+  <a href="{{route('pedidos.index')}}" class="btn btn-success"><span class="material-icons">
+    reply
+    </span> Regresar</a>
 </div>
      
 @endsection
