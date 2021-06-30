@@ -12,7 +12,7 @@ class Pedido extends Model
     //
     public $table = 'pedidos';
     protected $fillable = [
-        'user_id', 'nro_orden',  'sub_total', 'estado', 
+        'user_id', 'nro_orden',  'sub_total', 'estado', 'tipopago_id'
     ];
 
     protected $dates = ['expired_at'];

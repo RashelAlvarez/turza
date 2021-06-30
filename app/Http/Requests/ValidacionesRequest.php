@@ -34,6 +34,7 @@ class ValidacionesRequest extends FormRequest
              'rif' => 'required|max:10',
              'telefono' => 'required|max:11',
             'direccion' => 'required|min:10',
+            
             'file' => 'required|', 
             /* 'role_id' => 'required', */
      

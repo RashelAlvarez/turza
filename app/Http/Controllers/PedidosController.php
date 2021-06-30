@@ -12,6 +12,7 @@ use Cart;
 use App\ItemPedidos; 
 use App\Notifications\Pedidos;
 use App\Estado;
+use App\TipoPago;
 use Illuminate\Support\Collection;
 /* use Analytics;
 use Spatie\Analytics\Period; */
@@ -47,8 +48,9 @@ class PedidosController extends Controller
 
     public function index()
     {
-       
 
+            $pedido=Pedido::all();
+            $tipopago=TipoPago::all();
             $estado=Estado::all();
             $pedidos=DB::table('pedidos')
             ->join('item_pedidos', 'pedidos.nro_orden', '=', 'item_pedidos.id_detalle')
@@ -74,9 +76,11 @@ class PedidosController extends Controller
             ->groupBy('pedidos.id','pedidos.created_at', 'sub_total', 'nro_orden', 'estado.nombre', 'users.email')
             ->orderBy('nro_orden')
             ->get();
+
+
            /*  dd($pedidos2); */
  /*    dd($pedidos);  */
-        return view('admin.material.pedidos' , compact('pedidos', 'pedidos2', 'pedidos3', 'estado')); 
+        return view('admin.material.pedidos' , compact('pedidos', 'pedidos2', 'pedidos3', 'estado', 'tipopago', 'pedido')); 
      
     }
 
@@ -103,6 +107,7 @@ class PedidosController extends Controller
     public function store(Request $request)
     {
         //
+        
         $orden = Pedido::latest('id')->first();
         if(isset($orden)){
             $orden=str_pad($orden->nro_orden + 1, 7, "0", STR_PAD_LEFT);
@@ -144,6 +149,7 @@ class PedidosController extends Controller
                 "nro_orden" => $orden,
                 "sub_total"=> Cart::getSubtotal(),
                 "estado" => '1',
+                "tipopago_id" => $request['tipo_pago'],
                /*  "id_itempedidos" => $request['id_itempedidos'], */
                 "created_at"=>  Carbon::now(),
                 "updated_at"=>   Carbon::now(),
@@ -194,8 +200,9 @@ class PedidosController extends Controller
         ->join('productos', 'item_pedidos.idproducto', '=', 'productos.id')
         ->join('pedidos', 'item_pedidos.id_detalle', '=', 'pedidos.nro_orden')
         ->join('users', 'users.id', '=', 'pedidos.user_id')
+        ->join('tipo_pagos', 'tipo_pagos.id', '=', 'pedidos.tipopago_id')
         ->select('pedidos.nro_orden', 'productos.nombre', 'item_pedidos.cantidad', 'item_pedidos.total', 
-        'productos.precio', 'pedidos.sub_total', 'pedidos.created_at', 'pedidos.estado', 'users.razon_social', 
+        'productos.precio', 'pedidos.sub_total', 'pedidos.created_at', 'pedidos.estado', 'tipo_pagos.nombre as tnombre', 'users.razon_social', 
         'users.rif', 'users.telefono', 'users.direccion')
         ->where('pedidos.nro_orden', $nro_orden)
         ->orderBy('pedidos.nro_orden')
@@ -203,7 +210,7 @@ class PedidosController extends Controller
 
        /*  dd($pedidos); */
         /* $pedidos= Pedido::find($id); */
-    return view('admin.material.orden.verOrden', compact('pedidos')); 
+    return view('admin.material.orden.verOrden', compact('pedidos'))->with('pedido', 'Pedido registrado correctamente');; 
 
 
 
@@ -220,9 +227,9 @@ class PedidosController extends Controller
      
         
         $pedido = Pedido::findOrFail($id); 
-        $estado = Estado::select('id', 'nombre')->get(); 
-
-        return view('admin.material.frm.modificarPedido', compact( 'estado')); 
+       /*  $estado = Estado::select('id', 'nombre')->get();  */
+        $estados=Estado::find($id);
+        return view('admin.material.frm.modificarPedido', compact( 'estados', 'pedido')); 
      
         
     }

@@ -18,7 +18,7 @@ class VendedorController extends Controller
             "apellido" => $request->input('apellido'),
 
         ]);
-        return redirect('/usuarios'); 
+        return redirect('/usuarios')->with('exito', 'Datos registrados correctamente');; 
 
     }
 }

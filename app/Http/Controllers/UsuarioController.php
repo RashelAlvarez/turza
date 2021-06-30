@@ -86,7 +86,7 @@ class UsuarioController extends Controller
             'telefono' => $request->input('telefono'),
             'direccion' => $request->input('direccion'), 
            /*  'file' =>  $request->file('file')->store('public'), */
-
+            'vendedor_id' => $request->input('vendedor_id'),
             'file' => $request->file('file')->storeAs('rif', $request->file->getClientOriginalName()),
             "created_at" => Carbon::now(),
             "updated_at" => Carbon::now(),

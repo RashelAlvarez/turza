@@ -14,9 +14,9 @@ Turza | Pedido
 
 @section('contenido')  
  
-@if (session('exito'))
+@if (session('pedido'))
 <div class="alert alert-success">
-  {{ session('exito') }}
+  {{ session('pedido') }}
 </div>
 @endif
 {{-- {{Analytics::fetchMostVisitedPages(Period::days(7))}} --}}

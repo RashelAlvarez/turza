@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\DB;
 class EstadoSeeder extends Seeder
 {
     /**
@@ -21,7 +21,7 @@ class EstadoSeeder extends Seeder
         ));
         DB::table('estado')->insert(
         array(
-            'nombre' => 'Procesado',
+            'nombre' => 'Entregado',
     
         ));
           

@@ -69,6 +69,7 @@ Turza | Pedido
                 <h5 class="modal-title">Rif: {{$item->rif}}</h5>
                 <h5 class="modal-title">Teléfono: {{$item->telefono}}</h5>
                 <h5 class="modal-title">Dirección: {{$item->direccion}}</h5>
+                <h5 class="modal-title">Tipo de Pago: {{$item->tnombre}}</h5>
         </table>
     
        

@@ -42,20 +42,13 @@
                 
                 <div class="col-sm-12">
                   <div class="form-group"> 
-                  <select class="form-control" id="estado" name="estado"   required>
-{{--             {{dd($item->id)}} --}}
-                {{--       @foreach($item as $items)
-                      @if(isset($items))
-                      <option selected value="{{$items->id}}">{{$items->nombre}}</option>
-                     
-                      @endif
-                      
-                      @endforeach --}}
+                  <select class="select form-control-sm custom-select "  id="estado" name="estado"   required>
+
              
 
                       @foreach ($estado as $item)
              
-                    <option value="{{$item->id}}" @if ($pedido== $item) selected 
+                    <option value="{{$item->id}}" @if ($pedido->estado== $item) selected='selected'
                       @endif 
                       > {{$item->nombre }}</option>
                 

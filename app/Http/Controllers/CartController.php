@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Producto;
 use Cart;
 use App\Pedido;
+use App\TipoPago;
 use App\Http\Controllers\Session;
 
 class CartController extends Controller
@@ -63,7 +64,8 @@ class CartController extends Controller
             return view('admin.material.checkout', compact('productos', 'orden'));
         } */
         $productos=Producto::all();
-        return view('admin.material.checkout', compact('productos'));
+        $tipopago=TipoPago::all();
+        return view('admin.material.checkout', compact('productos', 'tipopago'));
     }
 
 

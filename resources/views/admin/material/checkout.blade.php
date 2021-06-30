@@ -36,7 +36,7 @@ Turza | Carrito de Compra
           <table  class="table">
             <thead class=" text-primary">
                 <th>#</th>
-              {{--   <th>Producto</th> --}}
+              
                 <th>Nombre</th> 
                 <th>Descripcion</th>
                 <th>Precio Unitario</th>
@@ -51,16 +51,14 @@ Turza | Carrito de Compra
             
             <tr>
               <td>{{$loop->iteration}}</td>
-             {{--    <td><img src="images/{{$item->image}}"/></td> --}}
+             
                 <td>{{$item->name}}</td>
                 <td>{{$item->attributes->descripcion}}</td>
                 <td>{{number_format($item->price,2)}}</td>
 
                 <td>
                   {{$item->quantity}}
-               {{--    <div class="table-cart-stepper">
-                  <input class="numeros" id="cantidad" value="{{$item->quantity}}" type="number" name="cantidad" data-zeros="true" value="0" min="0" max="1000" />
-                  </div> --}}
+              
                 </td>
                 <td>
                   {{number_format($item->price * $item->quantity,2)}}
@@ -90,46 +88,41 @@ Turza | Carrito de Compra
            
           </tbody>
 
-          <tr>
-            <td class="float-right">
+         
 
-          {{-- 
-              <div class="col-sm-12 float-right"> --}}
-                <div class="form-group {{ $errors->has('tipo_pago') ? 'has-error' : ''}}"> 
-                  <select class="form-control" id="tipo_pago" name="tipo_pago">
-                      <option selected disabled>--Tipo de Pago--</option>
-                      
-                        {{-- @foreach ($roles as $role)
-                          <option value="{{$role['id']}}">{{$role['nombre']}}</option>
-                        @endforeach --}}
-                    </select>
-                </div>
-              {{-- </div>
-           --}}
-          </td>
-          </tr>
+         
+              
+         
          
           </table>
-        {{--   <p><h3> Sub total: ${{number_format(Cart::getSubTotal(),2)}} </h3></p> --}}
-        {{--     <button type="button" href="#" class="btn btn-success mb-3 ">
-            Realizar Pedido
-          </button> --}}
      
-           
-        {{-- <input type="hidden" name="producto_id" value="{{$item->id}}"> --}}
         <form action="{{route('pedidos.store')}}" method="post" name="pedido">
           {!! csrf_field()  !!} 
-        
+          <div class="col-4">
+            <div class="form-group {{ $errors->has('tipo_pago') ? 'has-error' : ''}}"> 
+              <label class="bmd-label-floating"> Seleccione el método de pago:</label>
+              <select class="select form-control-sm custom-select " id="tipo_pago" name="tipo_pago">
+                  <option selected disabled>Tipo de Pago</option>
+                  
+                    @foreach ($tipopago as $item)
+                      <option value="{{$item['id']}}">{{$item['nombre']}}</option>
+                    @endforeach
+                </select>
+            </div>
+          </div>
           @foreach(Cart::getContent() as $item)
               
               <input type="hidden" name="user_id" value="{{ Auth::user()->id}}">
+
+
               <input type="hidden" name="pedido[{{$item->id}}][producto_id]" value="{{$item->id}}">
           
               <input type="hidden" name="pedido[{{$item->id}}][cantidad]" value="{{$item->quantity}}">
               <input type="hidden" name="pedido[{{$item->id}}][precio]" value="{{$item->price}}">
+              
               <input type="hidden" name="pedido[{{$item->id}}][total]" value="{{$item->price * $item->quantity}}">
               <input type="hidden" name="sub_total" value="{{Cart::getSubTotal()}}"> 
-              {{-- <input type="hidden" name="nro_orden" value="{{$orden}}"> --}} 
+             
           @endforeach
           <div ><button type="submit"   class="btn btn-success   float-right ">Realizar Pedido</button></div>
          

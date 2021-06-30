@@ -81,9 +81,9 @@
 
 
                 <div class="col-sm-12">
-                  <div class="form-group {{ $errors->has('vendedor') ? 'has-error' : ''}}"> 
-                    <select class="form-control" id="vendedor" name="vendedor">
-                        <option selected disabled>--Vendedor--</option>
+                  <div class="form-group {{ $errors->has('vendedor_id') ? 'has-error' : ''}}"> 
+                    <select class="select form-control-sm custom-select" id="vendedor_id" name="vendedor_id">
+                        <option selected disabled>Vendedor</option>
                         
                           @foreach ($vendedor as $item)
                             <option value="{{$item['id']}}">{{$item['nombre']}} {{$item['apellido']}}</option>
@@ -94,8 +94,8 @@
             
                   <div class="col-sm-12">
                     <div class="form-group {{ $errors->has('role_id') ? 'has-error' : ''}}"> 
-                      <select class="form-control" id="role_id" name="role_id">
-                          <option selected disabled>--Tipo de Usuario--</option>
+                      <select class="select form-control-sm custom-select" id="role_id" name="role_id">
+                          <option selected disabled>Tipo de Usuario</option>
                           
                             @foreach ($roles as $role)
                               <option value="{{$role['id']}}">{{$role['nombre']}}</option>

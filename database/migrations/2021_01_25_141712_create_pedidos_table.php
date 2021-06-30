@@ -31,7 +31,7 @@ class CreatePedidosTable extends Migration
             /* $table->integer('id_itempedidos'); */
             $table->decimal('sub_total');
             $table->integer('estado');
-            
+            $table->integer('tipopago_id');
             $table->timestamps();
             
         });
