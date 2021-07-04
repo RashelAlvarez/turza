@@ -8,6 +8,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use App\Pedido;
 use App\User;
+use App\Cliente;
 
 
 class Pedidos extends Notification
@@ -68,7 +69,7 @@ class Pedidos extends Notification
             
         return[
            
-           'text' => "Has recibido un nuevo pedido de:  " . User::find($this->fromUser)->nombre ,
+           'text' => "Has recibido un nuevo pedido de:  " . User::find($this->fromUser)->id ,
            
         ];
     }

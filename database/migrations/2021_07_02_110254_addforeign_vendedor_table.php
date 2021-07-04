@@ -13,16 +13,14 @@ class AddforeignVendedorTable extends Migration
      */
     public function up()
     {
-        //
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('clientes', function (Blueprint $table) {
             //
-            
             $table->foreign('vendedor_id')->references('id')->on('vendedors');
-            
-      
+        
+  
         });
     }
-
+  
     /**
      * Reverse the migrations.
      *
@@ -30,11 +28,9 @@ class AddforeignVendedorTable extends Migration
      */
     public function down()
     {
-        //
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('clientes', function (Blueprint $table) {
             //
-            $table->dropForeign('users_vendedor_id_foreign');
-          
+            $table->dropForeign('clientes_vendedor_id_foreign');
         });
     }
 }

@@ -49,9 +49,9 @@ class UsuarioController extends Controller
   
         $users=User::all();
         $roles = Role::all();
-        $productos=Producto::all();
+       /*  $productos=Producto::all(); */
         $vendedor=Vendedor::all();
-        return view('admin.material.usuarios', compact('users', 'roles', 'productos', 'vendedor'));
+        return view('admin.material.usuarios', compact('users', 'roles',  'vendedor'));
     }
 
     /**
@@ -70,12 +70,12 @@ class UsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ValidacionesRequest $request)
+    public function store(DatosUsuario $request)
     {
         //
 /* 
         dd($request->all()); */
-        $user= User::create([
+    /*     $user= User::create([
            "role_id" => $request->input('role_id'),
             "nombre" => $request->input('nombre'),
             "apellido" => $request->input('apellido'),
@@ -85,25 +85,34 @@ class UsuarioController extends Controller
             'rif' => $request->input('rif'),
             'telefono' => $request->input('telefono'),
             'direccion' => $request->input('direccion'), 
-           /*  'file' =>  $request->file('file')->store('public'), */
+          
             'vendedor_id' => $request->input('vendedor_id'),
             'file' => $request->file('file')->storeAs('rif', $request->file->getClientOriginalName()),
             "created_at" => Carbon::now(),
             "updated_at" => Carbon::now(),
           
-        ]);   
+        ]);   */ 
+        $user= User::create([
+            "role_id" => $request->input('role_id'),
+             "nombre" => $request->input('nombre'),
+             "apellido" => $request->input('apellido'),
+             "email" => $request->input('email'),
+             'password' => $request->input('password'),
+       
+             "created_at" => Carbon::now(),
+             "updated_at" => Carbon::now(),
+           
+         ]);  
     
         
-        $user->save();
+       
   
     
 
     session()->flash('exito', 'Se ha registrado correctamente');
     return redirect('/usuarios');
    
-     /*    return back()->with('success', 'Te has registrado correctamente'); */
-         
-   
+     
 
     }
 

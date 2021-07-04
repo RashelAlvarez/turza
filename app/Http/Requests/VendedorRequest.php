@@ -26,8 +26,10 @@ class VendedorRequest extends FormRequest
         return [
             //
 
-            'nombre' => 'required|string',
-            'apellido' => 'required|string',
+            'user_id' => 'required',
+            'rif' => 'required|string',
+            'direccion' => 'required|string',
+            'telefono' => 'required|string',
         ];
     }
 }

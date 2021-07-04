@@ -60,14 +60,15 @@ class PedidosController extends Controller
             ->orderBy('pedidos.nro_orden')
             ->get();
 
-            $pedidos2=DB::table('pedidos')
+         /*    $pedidos2=DB::table('pedidos')
             ->select('pedidos.created_at', 'sub_total', 'nro_orden', 'estado.nombre', 'users.email')
             ->join('users', 'pedidos.user_id', '=', 'users.id')
             ->join('estado', 'pedidos.estado', '=', 'estado.id')
             ->where('users.id', auth()->user()->id)
             ->groupBy('pedidos.created_at', 'sub_total', 'nro_orden', 'estado.nombre', 'users.email')
             ->orderBy('nro_orden')
-            ->get();
+            ->get(); */
+
 
             $pedidos3=DB::table('pedidos')
             ->select('pedidos.id','pedidos.created_at', 'sub_total', 'nro_orden', 'estado.nombre', 'users.email')

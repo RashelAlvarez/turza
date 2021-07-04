@@ -14,21 +14,20 @@ class CreatePedidosTable extends Migration
     public function up()
     {
         Schema::create('pedidos', function (Blueprint $table) {
-           /*  $table->id();
-            $table->integer('user_id');
-            $table->integer('product_id');
-            $table->integer('nro_orden');
-            $table->integer('cantidad');
-            $table->integer('precio');
-            $table->integer('total');
-            $table->string('estado');
-            $table->timestamps(); */
+          
 
 
-            $table->id();
+          /*   $table->id();
             $table->integer('user_id');        
             $table->integer('nro_orden');
-            /* $table->integer('id_itempedidos'); */
+            $table->decimal('sub_total');
+            $table->integer('estado');
+            $table->integer('tipopago_id');
+            $table->timestamps(); */
+
+            $table->id();
+            $table->integer('cliente_id');        
+            $table->integer('nro_orden');
             $table->decimal('sub_total');
             $table->integer('estado');
             $table->integer('tipopago_id');

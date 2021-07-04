@@ -8,14 +8,42 @@ class Cliente extends Model
 {
     //
 
-  /*   public $table = 'clientes';
+    public $table = 'clientes';
     protected $fillable = [
-        'cliente', 'rif' ,'telefono', 'direccion', 'file', '$user_id'
+       'user_id', 'razon_social', 'rif', 'telefono', 'direccion', 'vendedor_id', 'file',
     ];
-   
+
+
+    public function role(){
+        return $this->belongsTo(Role::class);
+
+    }
+        
+    public function hasRoles(array $roles){
+        foreach ($roles as $role){
+             if ($this->role->nombre === $role){
+             
+                return true;
+            }
+          
+        }
+      
+        return false;
+    }
+
+    public function vendedor(){
+        return $this->belongsTo(Vendedor::class);
+
+    }
+
+    public function pedido(){
+        return $this->hasMany(Pedido::class);
+
+    }
 
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->hasOne(User::class);
 
-    } */
+    }
+
 }

@@ -17,7 +17,7 @@ class AddforeignPedidosTable extends Migration
         Schema::table('pedidos', function (Blueprint $table) {
             //
             
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('cliente_id')->references('id')->on('users');
             
              
             $table->foreign('nro_orden')->references('id')->on('item_pedidos');
@@ -34,7 +34,7 @@ class AddforeignPedidosTable extends Migration
         //
         Schema::table('pedidos', function (Blueprint $table) {
             //
-            $table->dropForeign('pedidos_user_id_foreign');
+            $table->dropForeign('pedidos_cliente_id_foreign');
             $table->dropForeign('pedidos_nro_orden_foreign');
         });
 

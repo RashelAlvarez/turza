@@ -12,7 +12,7 @@ class Pedido extends Model
     //
     public $table = 'pedidos';
     protected $fillable = [
-        'user_id', 'nro_orden',  'sub_total', 'estado', 'tipopago_id'
+        'cliente_id', 'nro_orden',  'sub_total', 'estado', 'tipopago_id'
     ];
 
     protected $dates = ['expired_at'];
@@ -21,8 +21,8 @@ class Pedido extends Model
         'updated_at',
         
     ]; */
-    public function user(){
-        return $this->belongsTo(User::class); //devuelve un solo objeto
+    public function cliente(){
+        return $this->belongsTo(Cliente::class); //devuelve un solo objeto
         //hasMany devuelve un array de objetos relacionados
     }
  
@@ -47,7 +47,7 @@ class Pedido extends Model
 
        
         foreach ($request as $item){
-             if ($this->pedido->user_id === $item){
+             if ($this->pedido->cliente_id === $item){
              
                 return true;
             }

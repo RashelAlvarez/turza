@@ -20,7 +20,7 @@ class User extends Authenticatable
     
     public $table = 'users';
     protected $fillable = [
-        'role_id','nombre', 'apellido' ,'email', 'password', 'razon_social', 'rif', 'telefono', 'direccion', 'vendedor_id', 'file',
+        'role_id','nombre', 'apellido' ,'email', 'password', 
     ];
  
    
@@ -58,6 +58,11 @@ class User extends Authenticatable
 
     }
 
+    public function clientes(){
+        return $this->belognsTo(Cliente::class);
+
+    }
+
 
     public function vendedor(){
         return $this->belongsTo(Vendedor::class);
@@ -66,9 +71,9 @@ class User extends Authenticatable
     public function pedido(){
         return $this->belongsTo(Pedido::class);
 
-    }
+    } 
 
-  
+    
     
      public function hasRoles(array $roles){
         foreach ($roles as $role){

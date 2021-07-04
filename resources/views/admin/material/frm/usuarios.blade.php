@@ -47,51 +47,8 @@
                         <span class="text-danger">{!! $errors->first('password', '<span class=error>:message</span>') !!}</span>
                     </div>
                 </div>
-                <div class="col-sm-12 ">
-                  <div class="form-group {{ $errors->has('razon_social') ? 'has-error' : ''}}">
-                    <label class="bmd-label-floating"> Razón social</label>
-                      <input type="text" class="form-control" name="razon_social"    value="{{old('razon_social')}}">
-                      <span class="text-danger">{!! $errors->first('razon_social', '<span class=error>:message</span>') !!}</span>
-                  </div>
-                </div>
+                
 
-                <div class="col-sm-6 ">
-                  <div class="form-group {{ $errors->has('rif') ? 'has-error' : ''}}">
-                    <label class="bmd-label-floating"> Rif</label>
-                      <input type="text" class="form-control" name="rif"   value="{{old('rif')}}">
-                      <span class="text-danger">{!! $errors->first('rif', '<span class=error>:message</span>') !!}</span>
-                  </div>
-                </div>
-
-                <div class="col-sm-6 ">
-                  <div class="form-group {{ $errors->has('telefono') ? 'has-error' : ''}}">
-                      <label class="bmd-label-floating"> Teléfono</label>
-                      <input type="text" class="form-control" name="telefono"   value="{{old('telefono')}}">
-                      <span class="text-danger">{!! $errors->first('telefono', '<span class=error>:message</span>') !!}</span>
-                  </div>
-                </div>
-
-                <div class="col-sm-12 ">
-                  <div class="form-group {{ $errors->has('direccion') ? 'has-error' : ''}}">
-                    <label class="bmd-label-floating"> Dirección</label>
-                      <input type="text" class="form-control" name="direccion"    value="{{old('direccion')}}">
-                      <span class="text-danger">{!! $errors->first('direccion', '<span class=error>:message</span>') !!}</span>
-                  </div>
-                </div>
-
-
-                <div class="col-sm-12">
-                  <div class="form-group {{ $errors->has('vendedor_id') ? 'has-error' : ''}}"> 
-                    <select class="select form-control-sm custom-select" id="vendedor_id" name="vendedor_id">
-                        <option selected disabled>Vendedor</option>
-                        
-                          @foreach ($vendedor as $item)
-                            <option value="{{$item['id']}}">{{$item['nombre']}} {{$item['apellido']}}</option>
-                          @endforeach
-                      </select>
-                  </div>
-                </div>
-            
                   <div class="col-sm-12">
                     <div class="form-group {{ $errors->has('role_id') ? 'has-error' : ''}}"> 
                       <select class="select form-control-sm custom-select" id="role_id" name="role_id">
@@ -105,12 +62,6 @@
                   </div>
 
 
-                  <div class="col-sm-12 {{ $errors->has('file') ? 'has-error' : ''}}">
-                        <label class="bmd-label-floating">Rif: formato PDF,JPG,JPEG,PNG</label>
-                        <input type="file" id="file"  class="form-control-file" name="file"    value="{{old('file')}}"> 
-                        <span class="text-danger">{!! $errors->first('file', '<span class=error>:message</span>') !!}</span>
-                
-                  </div>
 
 
                   @if (session('exito'))

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 class UserSeeder extends Seeder
 {
@@ -22,11 +23,15 @@ class UserSeeder extends Seeder
             'apellido' => 'Alvarez',
             'email' => 'rashelalvarez21@gmail.com',
             'password' => Hash::make('123456'),
-            'razon_social' => 'Rashel Alvarez',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+         /*    'razon_social' => 'Rashel Alvarez',
             'rif' => 'J2153620',
             'telefono' => '04244473798',
             'direccion' => 'Urb Ricardo Urriera Sector 03 AV 01',
             'file' => 'mortadela.png',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(), */
             ));
             DB::table('users')->insert(
               array(
@@ -35,11 +40,16 @@ class UserSeeder extends Seeder
                 'apellido' => 'Lozada',
                 'email' => 'juanlozada@gmail.com',
                 'password' => Hash::make('123456'),
-                'razon_social' => 'Juan Lozada',
+                'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+/*                 'razon_social' => 'Juan Lozada',
                 'rif' => 'J12452101',
                 'telefono' => '04141254126',
                 'direccion' => 'Urb Ricardo Urriera Sector 03 AV 01',
                 'file' => 'mortadela.png',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(), */
+
               ));
     }
 }

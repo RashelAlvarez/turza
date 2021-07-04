@@ -26,18 +26,14 @@ class ValidacionesRequest extends FormRequest
       
         return [
             //
-            'nombre' => 'required|string|max:100',
-            'apellido' => 'required|string|max:100',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:4|confirmed',
-            'razon_social' => 'required|string|max:100|unique:users',
-             'rif' => 'required|max:10',
-             'telefono' => 'required|max:11',
+            'user_id' => 'required',
+            'razon_social' => 'required|string|max:100|unique:clientes',
+            'rif' => 'required|max:10',
+            'telefono' => 'required|max:11',
             'direccion' => 'required|min:10',
+            'vendedor_id' => 'required',
+            'file' => 'required', 
             
-            'file' => 'required|', 
-            /* 'role_id' => 'required', */
-     
         ];
     }
 }

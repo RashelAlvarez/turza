@@ -62,6 +62,15 @@
               <p>Clientes</p>
             </a>
           </li>
+
+          <li class="nav-item {{ (request()->is('vendedor*')) ? 'active' : '' }}">
+            <a class="nav-link" href="{{route('vendedor.index')}}">
+              <i class="material-icons">person</i>
+              <p>Vendedores</p>
+            </a>
+          </li>
+
+          
           @endif
          
  
