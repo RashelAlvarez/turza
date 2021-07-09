@@ -51,7 +51,7 @@ Turza | Vendedores
             </thead>
             <tbody>
             @foreach ($vendedor as $item)
-                  
+               <tr>   
             <td>{{$loop->iteration}}</td>
             <td >{{$item->email}}</td>
             <td >{{$item->rif}}</td>
@@ -66,7 +66,7 @@ Turza | Vendedores
                     </a>
             </td>
             
-         
+          </tr>
             @endforeach
          
            

@@ -13,6 +13,20 @@
             
               <div class="row">
                 <div class="col-sm-12">
+                  <div class="form-group {{ $errors->has('nombre') ? 'has-error' : ''}}">
+                      <label class="bmd-label-floating"> Nombre</label>
+                      <input type="text" class="form-control" name="nombre"    value="{{old('nombre')}}">
+                      <span class="text-danger">{!! $errors->first('nombre', '<span class=error>:message</span>') !!}</span>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group {{ $errors->has('apellido') ? 'has-error' : ''}}">
+                      <label class="bmd-label-floating"> Apellido</label>
+                      <input type="text" class="form-control" name="apellido"    value="{{old('apellido')}}">
+                      <span class="text-danger">{!! $errors->first('apellido', '<span class=error>:message</span>') !!}</span>
+                  </div>
+                </div>
+                <div class="col-sm-12">
                     <div class="form-group {{ $errors->has('rif') ? 'has-error' : ''}}">
                         <label class="bmd-label-floating"> Rif</label>
                         <input type="text" class="form-control" name="rif"    value="{{old('rif')}}">
@@ -36,12 +50,13 @@
                   <div class="col-sm-12">
                     <div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}"> 
                       <select class="select form-control-sm custom-select" id="user_id" name="user_id">
-                          <option selected disabled>Usuario</option>
+                          <option selected disabled>Selecciona el Usuario</option>
                           
                             @foreach ($user as $item)
-                              <option value="{{$item['id']}}">{{$item['email']}} </option>
+                              <option value="{{$item->id}}">{{$item->email}} </option>
                             @endforeach
                         </select>
+                        <span class="text-danger">{!! $errors->first('user_id', '<span class=error>:message</span>') !!}</span>
                     </div>
                   </div>
                

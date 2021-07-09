@@ -146,7 +146,7 @@ class PedidosController extends Controller
 
 
             $pedido= Pedido::create([
-                "user_id" => $request['user_id'],
+                "cliente_id" => $request['user_id'],
                 "nro_orden" => $orden,
                 "sub_total"=> Cart::getSubtotal(),
                 "estado" => '1',

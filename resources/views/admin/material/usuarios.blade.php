@@ -41,8 +41,7 @@ Turza | Usuarios
         <table id="example" class="table">
           <thead class=" text-primary">
             <th>#</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
+      
             <th>Correo</th>
             <th>Rol</th>
             <th>Fecha creación</th>
@@ -54,8 +53,7 @@ Turza | Usuarios
           
           <tr>
           <td>{{$loop->iteration}}</td>
-            <td>{{$user->nombre}}</td>
-            <td>{{$user->apellido}}</td>
+         
             <td>{{$user->email}}</td>
             <td>{{$user->Role->nombre}}</td>
             <td>{{$user->created_at->format('d-m-Y')}}</td>

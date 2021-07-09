@@ -24,7 +24,7 @@
         @endif --}}
 
        
-        @if  (auth()->user()->hasRoles(['Cliente', 'Administrador']))
+        @if  (auth()->user()->hasRoles(['Cliente', 'Administrador', 'Vendedor']))
         <li class="nav-item {{ (request()->is('productad*')) ? 'active' : '' }} ">
           <a class="nav-link" href="{{route('productad.index')}}">
             <i class="material-icons">dashboard</i>
@@ -38,7 +38,7 @@
         </li>
         @endif
 
-        @if  (auth()->user()->hasRoles(['Cliente', 'Administrador', 'Operador']))
+        @if  (auth()->user()->hasRoles(['Cliente', 'Administrador', 'Operador', 'Vendedor']))
         <li class="nav-item {{ (request()->is('pedidos*')) ? 'active' : '' }}">
           <a class="nav-link" href="{{route('pedidos.index')}}">
             <i class="material-icons">person</i>
@@ -72,7 +72,20 @@
 
           
           @endif
-         
+          @if  (auth()->user()->hasRoles(['Vendedor']))
+
+          <li class="nav-item {{ (request()->is('clientes*')) ? 'active' : '' }}">
+            <a class="nav-link" href="{{route('clientes.index')}}">
+              <i class="material-icons">person</i>
+              <p>Clientes</p>
+            </a>
+          </li>
+
+
+
+
+
+          @endif
  
         <!-- your sidebar here -->
       </ul>

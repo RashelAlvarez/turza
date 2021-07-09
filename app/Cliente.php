@@ -10,7 +10,7 @@ class Cliente extends Model
 
     public $table = 'clientes';
     protected $fillable = [
-       'user_id', 'razon_social', 'rif', 'telefono', 'direccion', 'vendedor_id', 'file',
+       'user_id', 'nombre', 'apellido', 'razon_social', 'rif', 'telefono', 'direccion', 'vendedor_id', 'file', 'email',
     ];
 
 
@@ -45,5 +45,6 @@ class Cliente extends Model
         return $this->hasOne(User::class);
 
     }
+    
 
 }

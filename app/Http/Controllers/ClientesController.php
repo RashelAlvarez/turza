@@ -8,6 +8,7 @@ use App\Producto;
 use App\Role;
 use App\Cliente;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
 use App\Http\Requests\ValidacionesRequest;
 use Illuminate\Support\Facades\Storage;
@@ -24,22 +25,27 @@ class ClientesController extends Controller
     {
         $this->middleware([
             
-            'auth', 'roles:Administrador,Operador'
+            'auth', 'roles:Administrador,Operador,Vendedor'
         
         ]);
     }
     public function index()
     {
         
-     /*    $user=User::all(); */
-        $clientes=DB::table('clientes')
-        ->select('clientes.id','razon_social', 'clientes.rif', 'clientes.telefono', 'clientes.direccion', 'users.email')
-        ->join('users', 'clientes.user_id', '=', 'users.id')
+    
+        $clientes=Cliente::all();
+        $clientes2=DB::table('clientes')
+        ->select('clientes.id', 'clientes.nombre', 'clientes.apellido', 'razon_social', 'clientes.rif', 'clientes.telefono', 
+        'clientes.direccion', 'clientes.email', 'users.email as usvendedor', 'clientes.created_at', 'clientes.file' )
         ->join('vendedors', 'clientes.vendedor_id', '=', 'vendedors.id')
+        ->join('users', 'vendedors.user_id', '=', 'users.id' )
+        ->where('vendedors.user_id', auth()->user()->id)
         ->get();
+
         $vendedor=DB::table('vendedors')
-        ->select('vendedors.id', 'users.nombre', 'users.apellido')
+        ->select('vendedors.id', 'vendedors.nombre', 'vendedors.apellido')
         ->join('users', 'vendedors.user_id', '=', 'users.id')
+        ->where('vendedors.user_id', auth()->user()->id)
         ->get();
         $user=DB::table('users')
         ->select('users.id', 'users.email')
@@ -56,7 +62,7 @@ class ClientesController extends Controller
         /* $roles = Role::all();
         $productos=Producto::all();
         $vendedor=Vendedor::all(); */
-        return view('admin.material.clientes', compact('clientes', 'vendedor', 'user'));
+        return view('admin.material.clientes', compact('clientes', 'clientes2', 'vendedor', 'user'));
      
        
     }
@@ -79,28 +85,28 @@ class ClientesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidacionesRequest $request)
     {
 
        /*  dd($request->all()); */
 
         $cliente= Cliente::create([
             'user_id' => $request->input('user_id'),
+            'nombre' => $request->input('nombre'),
+            'apellido' => $request->input('apellido'),
              'razon_social' => $request->input('razon_social'),
              'rif' => $request->input('rif'),
              'telefono' => $request->input('telefono'),
              'direccion' => $request->input('direccion'), 
-            /*  'file' =>  $request->file('file')->store('public'), */
              'vendedor_id' => $request->input('vendedor_id'),
-             'file' => $request->file('file')->storeAs('rif', $request->file->getClientOriginalName()),
+             'file' => $request->file('file')->storeAs('public', $request->file->getClientOriginalName()),
+             'email' =>$request->input('email'),
              "created_at" => Carbon::now(),
              "updated_at" => Carbon::now(),
            
          ]);   
      
-         /* 
-         $cliente->save(); */
-   
+   /*   $cliente->save();   */     
      
  
      session()->flash('exito', 'Se ha registrado correctamente');
@@ -120,9 +126,11 @@ class ClientesController extends Controller
         $user = User::findOrFail($id);
         $filename = $user->file;
         $pathToFile = storage_path($filename);
-       /*  dd($pathToFile); */
-        return view( 'admin.material.carrito'    , compact('filename'));
-       /*  return Storage::response("$filename"); */
+     /*    return Response::make(file_get_contents($pathToFile), 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="'.$filename.'"'
+        ]); */
+        return response()->file($pathToFile);
     }
  
     /**

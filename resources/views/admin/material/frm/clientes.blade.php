@@ -13,6 +13,20 @@
             
             <div class="row">
               <div class="col-sm-12 ">
+                <div class="form-group {{ $errors->has('nombre') ? 'has-error' : ''}}">
+                  <label class="bmd-label-floating">Nombre</label>
+                    <input type="text" class="form-control" name="nombre"    value="{{old('nombre')}}">
+                    <span class="text-danger">{!! $errors->first('nombre', '<span class=error>:message</span>') !!}</span>
+                </div>
+              </div>
+              <div class="col-sm-12 ">
+                <div class="form-group {{ $errors->has('apellido') ? 'has-error' : ''}}">
+                  <label class="bmd-label-floating">Apellido</label>
+                    <input type="text" class="form-control" name="apellido"    value="{{old('apellido')}}">
+                    <span class="text-danger">{!! $errors->first('apellido', '<span class=error>:message</span>') !!}</span>
+                </div>
+              </div>
+              <div class="col-sm-12 ">
                 <div class="form-group {{ $errors->has('razon_social') ? 'has-error' : ''}}">
                   <label class="bmd-label-floating"> Razón social</label>
                     <input type="text" class="form-control" name="razon_social"    value="{{old('razon_social')}}">
@@ -21,20 +35,30 @@
               </div>
                   <div class="col-sm-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="rif"  placeholder="Rif" value="{{old('rif')}}">
+                        <input type="text" class="form-control" name="rif"  value="{{old('rif')}}">
+                        <label class="bmd-label-floating">Rif</label>
                         <span class="text-danger">{!! $errors->first('rif', '<span class=error>:message</span>') !!}</span>
                      </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="telefono"  placeholder="Teléfono" value="{{old('telefono')}}">
+                        <input type="text" class="form-control" name="telefono"  value="{{old('telefono')}}">
+                        <label class="bmd-label-floating"> Teléfono</label>
                         <span class="text-danger">{!! $errors->first('telefono', '<span class=error>:message</span>') !!}</span>
                     </div>
                   </div>
                   <div class="col-sm-12">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="direccion"  placeholder="Dirección" value="{{old('direccion')}}">
+                        <input type="text" class="form-control" name="direccion"  value="{{old('direccion')}}">
+                        <label class="bmd-label-floating">Dirección</label>
                         <span class="text-danger">{!! $errors->first('direccion', '<span class=error>:message</span>') !!}</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="email"  value="{{old('email')}}">
+                        <label class="bmd-label-floating">Correo</label>
+                        <span class="text-danger">{!! $errors->first('email', '<span class=error>:message</span>') !!}</span>
                     </div>
                   </div>
                 
@@ -51,7 +75,7 @@
                         </select>
                     </div>
                   </div>
-
+                @if  (auth()->user()->hasRoles(['Administrador', 'Operador']))  
                   <div class="col-sm-12">
                     <div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}"> 
                       <select class="select form-control-sm custom-select" id="user_id" name="user_id">
@@ -63,10 +87,10 @@
                         </select>
                     </div>
                   </div>
-        
+                @endif
                   <div class="col-sm-12 {{ $errors->has('file') ? 'has-error' : ''}}">
                     <label class="bmd-label-floating">Rif: formato PDF,JPG,JPEG,PNG</label>
-                    <input type="file" id="file"  class="form-control-file" name="file"    value="{{old('file')}}"> 
+                    <input type="file" id="file" accept="image/jpeg,image/png" class="form-control-file" name="file"    value="{{old('file')}}"> 
                     <span class="text-danger">{!! $errors->first('file', '<span class=error>:message</span>') !!}</span>
             
               </div>

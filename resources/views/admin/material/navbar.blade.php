@@ -68,7 +68,7 @@
 
           <li class="nav-item dropdown">
             <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="material-icons">person</i>  <span class="hidden-xs"> {{ Auth::user()->nombre }} {{ Auth::user()->apellido }}</span><i class="material-icons">arrow_drop_down</i> 
+              <i class="material-icons">person</i>  <span class="hidden-xs"> {{ Auth::user()->email }} </span><i class="material-icons">arrow_drop_down</i> 
               <p class="d-lg-none d-md-block">
                 Account
               </p>

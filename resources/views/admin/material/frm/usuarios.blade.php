@@ -12,20 +12,7 @@
             <div class="modal-body" id="body">
             
               <div class="row">
-                <div class="col-sm-6">
-                    <div class="form-group {{ $errors->has('nombre') ? 'has-error' : ''}}">
-                        <label class="bmd-label-floating"> Nombre</label>
-                        <input type="text" class="form-control" name="nombre"    value="{{old('nombre')}}">
-                        <span class="text-danger">{!! $errors->first('nombre', '<span class=error>:message</span>') !!}</span>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="form-group {{ $errors->has('apellido') ? 'has-error' : ''}}">
-                      <label class="bmd-label-floating">Apellido</label>
-                        <input type="text" class="form-control" name="apellido"    value="{{old('apellido')}}">
-                        <span class="text-danger">{!! $errors->first('apellido', '<span class=error>:message</span>') !!}</span>
-                     </div>
-                  </div>
+              
                   <div class="col-sm-12">
                     <div class="form-group {{ $errors->has('email') ? 'has-error' : ''}}">
                         <label class="bmd-label-floating"> Correo</label>

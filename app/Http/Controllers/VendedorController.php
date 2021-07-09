@@ -14,7 +14,11 @@ class VendedorController extends Controller
     public function index(){
 
          
-        $user=User::all();
+        $user=DB::table('users')
+        ->select('users.id', 'users.email')
+        ->join('roles', 'users.role_id', '=', 'roles.id')
+        ->where('users.role_id', 4)
+        ->get();
         $vendedor=DB::table('vendedors')
         ->select('vendedors.id','users.email', 'vendedors.rif', 'vendedors.direccion', 'vendedors.telefono' )
         ->join('users', 'vendedors.user_id', '=', 'users.id')
@@ -27,6 +31,8 @@ class VendedorController extends Controller
        
         $vendedor = Vendedor::create([
             "user_id" => $request->input('user_id'),
+            "nombre" => $request->input('nombre'),
+            "apellido" => $request->input('apellido'),
             "rif" => $request->input('rif'),
             "direccion" => $request->input('direccion'),
             "telefono" => $request->input('telefono'),

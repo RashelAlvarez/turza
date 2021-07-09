@@ -10,7 +10,7 @@ class Vendedor extends Model
 
     public $table= 'vendedors';
     protected $fillable =[ 
-        'user_id', 'rif', 'direccion' , 'telefono',
+        'user_id','nombre' , 'apellido' ,'rif', 'direccion' , 'telefono',
     ];
 
     public function user(){

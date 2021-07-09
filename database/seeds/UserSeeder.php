@@ -19,8 +19,8 @@ class UserSeeder extends Seeder
         DB::table('users')->insert(
             array(
             'role_id' => '1',
-            'nombre' => 'Rashel',
-            'apellido' => 'Alvarez',
+           /*  'nombre' => 'Rashel',
+            'apellido' => 'Alvarez', */
             'email' => 'rashelalvarez21@gmail.com',
             'password' => Hash::make('123456'),
             'created_at' => Carbon::now(),
@@ -36,8 +36,8 @@ class UserSeeder extends Seeder
             DB::table('users')->insert(
               array(
                 'role_id' => '2',
-                'nombre' => 'Juan',
-                'apellido' => 'Lozada',
+                /* 'nombre' => 'Juan',
+                'apellido' => 'Lozada', */
                 'email' => 'juanlozada@gmail.com',
                 'password' => Hash::make('123456'),
                 'created_at' => Carbon::now(),

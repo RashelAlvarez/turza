@@ -52,8 +52,12 @@ class LoginController extends Controller
            break;
            case'2':
             return '/pedidos';
+           break;
            case '3':
             return '/productad';
+           break;
+            case '4':
+              return '/productad';
            break;
 
 

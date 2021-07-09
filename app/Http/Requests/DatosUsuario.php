@@ -26,8 +26,7 @@ class DatosUsuario extends FormRequest
         return [
             //
             
-            'nombre' => 'required|string|max:100',
-            'apellido' => 'required|string|max:100',
+            
             'email' => 'required|email|unique:users',
             'password' => 'required|min:4|confirmed',
             'role_id' => 'required', 

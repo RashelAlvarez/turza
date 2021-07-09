@@ -94,8 +94,8 @@ class UsuarioController extends Controller
         ]);   */ 
         $user= User::create([
             "role_id" => $request->input('role_id'),
-             "nombre" => $request->input('nombre'),
-             "apellido" => $request->input('apellido'),
+             /* "nombre" => $request->input('nombre'),
+             "apellido" => $request->input('apellido'), */
              "email" => $request->input('email'),
              'password' => $request->input('password'),
        
