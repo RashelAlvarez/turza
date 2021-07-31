@@ -8,6 +8,7 @@ Turza | Productos
 
 
 
+
 @section('section')
 
 Productos
@@ -31,16 +32,28 @@ Productos
        
         <div class="col-md-12">
 
-            <div class="row">
-        
+            
+              {{-- <form method="post" action="{{url('/productad/'.$item->razon_social.'/mostrarProductos')}}"> --}}
+                <div class="col-sm-4">
+                    <div class="form-group {{ $errors->has('cliente_id') ? 'has-error' : ''}}"> 
+                      <select class="select form-control-sm custom-select" id="cliente_id" name="cliente_id">
+                          <option selected disabled>Selecciona el cliente:</option>
+                          
+                            @foreach ($clientes as $item)
+                              <option value="{{$item->id}}">{{$item->razon_social}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                  </div>
+              {{-- </form> --}}
             <!-------------------------------------------- Productos----------------------------------------->
-        
-            @foreach ($productos as $item)
-                
+            <div class="row"> 
+             @foreach ($productos as $item)
+              
            
-                
-                <!-------------------------------------------1er producto--------------------------------->
-                <div class="col-sm-6 col-md-12 col-lg-4">
+                 
+               
+                <div class="col-sm-6 col-md-12 col-lg-4" id="productos">
                 <div class="oh-desktop">
                     
                     <article class="product product-2 box-ordered-item wow slideInLeft" data-wow-delay="0s">
@@ -56,20 +69,18 @@ Productos
                         
                          
                       
-                            {{-- <div class="product-button">   <input type="submit" value="Agregar al carrito" class="button button-md button-white button-ujarak"></div>
-                       
-                    --}}
+                           
                             
                         <div class="product-button"><a class="button button-md button-white button-ujarak" href="{{route('productad.show', $item->id)}}">Ver Detalle</a></div>
                         </div>  
                         
                         </div>
-                       {{--  <p>Ingresar Cantidad: <input type="number" name="quantity" value="1" min="1" max="10000"> </p> --}}
+                       
                     </form>
                         <div class="unit-body">
                         <h6 class="product-title"><a href="#">{{$item->nombre}}</a></h6>
                       
-                        <h6 class="product-title">Precio: ${{$item->precio}}</h6>
+                        <h6 class="product-title">Precio: ${{$item->precio_unitario}}</h6>
                        
                         @endauth
                     
@@ -80,7 +91,7 @@ Productos
                 </div>
                 </div>
             @endforeach
-            </div>
+              </div>
         </div>
 
 
@@ -99,5 +110,41 @@ Productos
 @include('admin/material/frm/agregarProductos')
      
 
+<script>
 
+    //jquery obtienes de forma muy sencilla el value de la opcion seleccionada
+  
+   /*  $("#cliente_id").change(function(){
+          var cliente = $("#cliente_id").val();
+          alert(cliente);
+        });
+ */
+
+ 
+ $('#cliente_id').on('change', function(){
+            var cliente = $("#cliente_id").val();
+          
+            $.ajax({
+                url:"{{url('productad')}}/"+id+"/mostrarProductos";
+                method:"get",
+                data:cliente,
+                dataType: "json",
+                success: function (data) {
+                    $("#productos").html(response);
+         
+                    
+                    $('#cliente_id').val(data.cliente.id);
+                   
+                    $("#productos").delay(500).fadeIn("slow");      // Si hemos tenido éxito, hacemos aparecer el div "exito" con un efecto fadeIn lento tras un delay de 0,5 segundos.
+                   
+                  
+
+                }
+            })
+        }); 
+    
+
+</script>
 @endsection
+
+

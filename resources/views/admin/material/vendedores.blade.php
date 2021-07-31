@@ -59,7 +59,7 @@ Turza | Vendedores
             <td >{{$item->telefono}}</td>
             <td>
        
-                <a type="button" href="{{url('/vendedor/'.$item->id.'/edit')}}"  rel="tooltip" title="Modificar" class="btn btn-warning btn-sm" id="modificarUsuario" data-toggle="modal" data-target="#frmModificarUsuario" >
+                <a type="button" href="{{url('/vendedor/'.$item->id.'/edit')}}"  rel="tooltip" title="Modificar" class="btn btn-warning btn-sm" id="modificarUsuario"  data-toggle="modal" data-target="#frmModificarUsuario" >
                     <span class="material-icons ">
                       create
                       </span>

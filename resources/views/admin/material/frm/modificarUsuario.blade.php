@@ -13,42 +13,30 @@
             {{method_field('PATCH')}}
             <div class="modal-body" id="body">
             
-            
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="nombre"  placeholder="Nombre" value="{{$user->nombre}}">
-                        <span class="text-danger">{!! $errors->first('nombre', '<span class=error>:message</span>') !!}</span>
-                    </div>
-                  </div>
+           
                   <div class="col-sm-12">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="apellido"  placeholder="Apellido" value="{{$user->apellido}}">
-                        <span class="text-danger">{!! $errors->first('apellido', '<span class=error>:message</span>') !!}</span>
-                     </div>
-                  </div>
-                  <div class="col-sm-12">
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="email"  placeholder="Correo" value="{{$user->email}}">
+                    <input type="text" class="form-control" name="email" id="email" placeholder="Correo" {{-- value="{{$user->email}}" --}}>
                         <span class="text-danger">{!! $errors->first('correo', '<span class=error>:message</span>') !!}</span>
                     </div>
                   </div>
                   <div class="col-sm-12">
                     <div class="form-group">
-                        <input type="password" class="form-control" name="password"  placeholder="Contraseña" value="{{$user->password}}">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña" >
                         <span class="text-danger">{!! $errors->first('password', '<span class=error>:message</span>') !!}</span>
                     </div>
                   </div>
                   <div class="col-sm-12">
                     <div class="form-group">
                       
-                        <input  type="password" class="form-control" name="password_confirmation" placeholder="Confirmar Contraseña" value="{{$user->password}}" required autocomplete="new-password">
+                        <input  type="password" class="form-control" name="password_confirmation" placeholder="Confirmar Contraseña"  required autocomplete="new-password">
                         <span class="text-danger">{!! $errors->first('password', '<span class=error>:message</span>') !!}</span>
                     </div>
                 </div>
                 
                 <div class="col-sm-12">
                     <div class="form-group"> 
-                  <select class="form-control" id="role_id" name="role_id" required>
+                      <select class="select form-control-sm custom-select" id="role_id" name="role_id">
                       <option selected disabled>--Tipo de Usuario--</option>
                       
                         @foreach ($roles as $role)

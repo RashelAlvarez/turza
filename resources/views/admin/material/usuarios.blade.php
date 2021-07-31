@@ -61,7 +61,7 @@ Turza | Usuarios
             {{--   <a type="button" href="{{route('/usuarios.edit/'.$user->id.'/edit')}}"  id="modificarUsuario" data-toggle="modal" data-target="#frmModificar" > <span class="material-icons yellow">
                 create
                 </span></a> --}}
-                <a type="button" href="{{url('/usuarios/'.$user->id.'/edit')}}"  rel="tooltip" title="Modificar" class="btn btn-warning btn-sm" id="modificarUsuario" data-toggle="modal" data-target="#frmModificarUsuario" >
+              <a type="button" href="{{url('/usuarios/'.$user->id.'/edit')}}" data-id="{{$user->id}}" {{-- rel="tooltip" title="Modificar" --}} class="btn btn-warning btn-sm" id="modificarUsuario" name="id"  onclick="obtenerVendedor('{{$user->id}}')"  data-toggle="modal" data-target="#frmModificarUsuario" >
                   <span class="material-icons ">
                     create
                     </span>
@@ -99,10 +99,84 @@ Turza | Usuarios
 
 
 
-@include('admin/material/frm/usuarios')
-@include('admin/material/frm/modificarUsuario')
+<script>
+
+  function obtenerVendedor(id){
+  var route = "{{url('usuarios')}}/"+id+"/edit";
+  $.get(route, function(data){
+    
+    
+    $('#email').val(data.email);
+    $('#password').val(data.password);
+  /*   $("select[name='role_id'").html(data.role_id); */
+  $('#role_id').val(data.role_id).html(data);
+  alert(data.role_id)
+ /*  $("#role_id").on('change', function () {
+      
+            role_id=$(this).val();
+            alert(role_id);
+       	
+       
+   }); */
+  });
+
+  
+   
+ 
+ 
+  /* var plantSelect = $('#role_id');
+  function populatePlantSelect() {
+        $.ajax({
+            url: "{{ route('usuarios.create') }}",
+            type: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                $.each(response.data, function (key, value) {
+                    plantSelect.append("<option value='" + value.id + "'>" + value.name + "</option>");
+                });
+            },
+            error: function () {
+                alert('Hubo un error obteniendo las plantas!');
+            }
+        });
+    } */
+  /*  
+     $(document).ready(function(){
+
+$(".role_id").click(function(){
+  var role=data.role_id;
+     var id = $(this).attr('id');  
+    console.log(role);
+    var parametros={"role":role};  
+               
+            $.ajax({
+                data: parametros,
+                url: "{{url('usuarios')}}/"+id+"/edit",
+                type:  'get',
+                beforeSend: function () {},
+                    success:  function (response) {    
+                    $(".role_id").html(response);
+
+                    setTimeout(() => {
+                        $(".role_id").empty();  
+                    }, 2000);
+                },
+                error:function(){
+                    alert("error")
+                }
+            }); // fin de ajax/ 
+}); // fin de click 
+});  
+  */
+ }  
 
 
+
+   
+</script>
  
 
+
+@include('admin/material/frm/usuarios')
+@include('admin/material/frm/modificarUsuario')
 @endsection

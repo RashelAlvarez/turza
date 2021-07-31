@@ -12,6 +12,8 @@ use Cart;
 use App\ItemPedidos; 
 use App\Notifications\Pedidos;
 use App\Estado;
+use App\Http\Requests\PedidoRequest;
+use App\Http\Requests\PedidoVendedorRequest;
 use App\TipoPago;
 use Illuminate\Support\Collection;
 /* use Analytics;
@@ -105,7 +107,7 @@ class PedidosController extends Controller
 
    
   
-    public function store(Request $request)
+    public function store(PedidoRequest $request)
     {
         //
         
@@ -140,7 +142,7 @@ class PedidosController extends Controller
                    ]); 
                }
   
-}
+                }
 
      
 
@@ -181,6 +183,10 @@ class PedidosController extends Controller
     return redirect('/pedidos'); 
       
     }
+
+
+
+     
 
     /**
      * Display the specified resource.

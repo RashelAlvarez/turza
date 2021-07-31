@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Producto;
 use Cart;
+use DB;
 use App\Pedido;
 use App\TipoPago;
 use App\Http\Controllers\Session;
@@ -65,7 +66,10 @@ class CartController extends Controller
         } */
         $productos=Producto::all();
         $tipopago=TipoPago::all();
-        return view('admin.material.checkout', compact('productos', 'tipopago'));
+        $cliente=DB::table('clientes')
+        ->select('clientes.id', 'clientes.razon_social')
+        ->get();
+        return view('admin.material.checkout', compact('productos', 'tipopago', 'cliente'));
     }
 
 

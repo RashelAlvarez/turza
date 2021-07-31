@@ -121,8 +121,8 @@
                     </li>
                     <li class="rd-nav-item {{request()->is('login') ? 'active' : ''}}"><a class="rd-nav-link" href="{{url('login')}}">Ingresar</a>
                     </li>
-                    <li class="rd-nav-item {{request()->is('registrar') ? 'active' : ''}}"><a class="rd-nav-link" href="{{url('registrar')}}">Registrar</a>
-                    </li>
+                  {{--   <li class="rd-nav-item {{request()->is('registrar') ? 'active' : ''}}"><a class="rd-nav-link" href="{{url('registrar')}}">Registrar</a>
+                    </li> --}}
                
                
                 

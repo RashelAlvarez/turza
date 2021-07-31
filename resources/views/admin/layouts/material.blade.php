@@ -13,7 +13,9 @@
   <link rel="icon" href="{{asset('/images/icon.ico')}}" type="image/x-icon">
   <!-- Material Kit CSS -->
   <link href="{{asset('/css/material-dashboard.css')}}" rel="stylesheet" />
-
+{{--   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script> --}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   
 
   <link href="{{asset('/css/demo.css')}}" rel="stylesheet" />

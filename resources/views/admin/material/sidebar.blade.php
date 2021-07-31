@@ -70,6 +70,13 @@
             </a>
           </li>
 
+          <li class="nav-item {{ (request()->is('costos*')) ? 'active' : '' }}">
+            <a class="nav-link" href="{{route('costos.index')}}">
+              <i class="material-icons">person</i>
+              <p>Costos</p>
+            </a>
+          </li>
+
           
           @endif
           @if  (auth()->user()->hasRoles(['Vendedor']))

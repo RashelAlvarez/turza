@@ -18,4 +18,8 @@ class Producto extends Model
         //hasMany devuelve un array de objetos relacionados
     }
 
+    public function precio(){
+        return $this->belongsTo(Precio_Unitario::class);
+    }
+
 }

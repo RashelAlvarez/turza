@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Producto;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use DB;
 
 class ProductAdController extends Controller
 {
@@ -25,12 +26,30 @@ class ProductAdController extends Controller
     public function index()
     {
         //
-        $productos=Producto::all();
+      /*   $productos=Producto::all(); */
+      
+      $clientes=DB::table('clientes')
+      ->select('id', 'razon_social')
+      ->get();
 
-
-        return view('admin.material.productos', compact('productos'));
+      return view('admin.material.productos', compact('clientes'));
+      
+     
     }
 
+        public function mostrarProductos($id){
+            
+           
+            $productos=DB::table('precio_producto')
+            ->select('clientes.id','productos.id', 'productos.nombre', 'productos.descripcion', 'productos.image', 'precio_producto.precio_unitario', 'clientes.razon_social')
+            ->join('productos', 'precio_producto.idproducto', '=', 'productos.id')
+            ->join('clientes', 'precio_producto.idcliente', '=', 'clientes.id')
+            ->where('clientes.id', $id)
+            ->get();
+           /*  return response()->json(array('cliente_id'=>$id)); */
+
+            return  response()->json($productos);
+        }
 
     
 

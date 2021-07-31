@@ -7,7 +7,7 @@ use App\User;
 use Carbon\Carbon;
 use App\Role;
 use Illuminate\Http\Request;
-use App\Usuario;
+
 use App\Producto;
 use App\Vendedor;
 use App\Notifications\Pedidos;
@@ -33,6 +33,11 @@ class UsuarioController extends Controller
        
     }
 
+
+    public function getrole($id){
+     return    User::where('role_id', $id)->get();
+    }
+
     public function index()
     {
         // 
@@ -54,6 +59,8 @@ class UsuarioController extends Controller
         return view('admin.material.usuarios', compact('users', 'roles',  'vendedor'));
     }
 
+
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -62,6 +69,13 @@ class UsuarioController extends Controller
     public function create()
     {
         //
+        try {    
+            $plantas = Role::all();
+            $response = ['data' => $plantas];
+        } catch (\Exception $exception) {
+            return response()->json([ 'message' => 'There was an error retrieving the records' ], 500);
+        }
+        return response()->json($response);
     }
 
     /**
@@ -138,7 +152,8 @@ class UsuarioController extends Controller
         //
         $user= User::findOrFail($id);
         $roles=Role::all();
-        return view('admin.material.frm.modificarUsuario', compact('user','roles'));
+        return  response()->json($user);
+       /*  return view('admin.material.frm.modificarUsuario', compact('user','roles')); */
 
 
 

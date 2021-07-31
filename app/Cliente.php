@@ -45,6 +45,10 @@ class Cliente extends Model
         return $this->hasOne(User::class);
 
     }
+
+    public function producto_precios(){
+        return $this->hasMany(Precio_Unitario::class);
+    }
     
 
 }
