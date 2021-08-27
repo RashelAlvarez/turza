@@ -7,7 +7,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form class="form"  method="post" action="{{url('/usuarios/'.$user->id)}}">
+        <form class="form" id="form" method="post" {{-- action="{{url('/usuarios/'.$user->id)}}" --}}>
             {!! csrf_field()  !!}
           
             {{method_field('PATCH')}}
@@ -37,10 +37,10 @@
                 <div class="col-sm-12">
                     <div class="form-group"> 
                       <select class="select form-control-sm custom-select" id="role_id" name="role_id">
-                      <option selected disabled>--Tipo de Usuario--</option>
-                      
+                      <option value="">--Tipo de Usuario--</option>
+              
                         @foreach ($roles as $role)
-                          <option value="{{$role['id']}}">{{$role['nombre']}}</option>
+                          <option value="{{$role->id}}">{{$role->nombre}}</option>
                         @endforeach
                     </select>
                     <span class="text-danger">{!! $errors->first('role_id', '<span class=error>Seleccione una opción</span>') !!}</span>

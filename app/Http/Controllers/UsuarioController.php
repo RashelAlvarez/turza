@@ -34,9 +34,7 @@ class UsuarioController extends Controller
     }
 
 
-    public function getrole($id){
-     return    User::where('role_id', $id)->get();
-    }
+    
 
     public function index()
     {
@@ -150,14 +148,33 @@ class UsuarioController extends Controller
     public function edit($id)
     {
         //
-        $user= User::findOrFail($id);
+       /*  $user= User::findOrFail($id);
         $roles=Role::all();
-        return  response()->json($user);
-       /*  return view('admin.material.frm.modificarUsuario', compact('user','roles')); */
+        return  response()->json($user); */
+        $result = User::where('role_id', $id)->first();
+       
+        
+        if($result) {
+            return response()->json([
+                'message' => "Data Found",
+                "code"    => 200,
+                "data"    => $result
+            ]);
+        } else  {
+            return response()->json([
+                'message' => "Internal Server Error",
+                "code"    => 500
+            ]);
+        }
 
 
 
     }
+
+    public function getrole($getrole){
+  /*       return User::where('role_id', $getrole)->get(); */
+        /*  dd($db); */
+        }
 
     /**
      * Update the specified resource in storage.

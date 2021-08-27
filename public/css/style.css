@@ -4161,14 +4161,20 @@ textarea.textarea-lg {
 	color: #eda407;
 }
 
+
+
+/********************************************FOOTER ROJO****************************************************************/
+
+
+
 .footer-modern {
 	font-size: 16px;
 	line-height: 1.5;
-	background: rgb(43, 42, 40);
+	background: #a60d10;
 }
 
 .footer-modern .footer-variant-2-bottom-panel {
-	background:#151515;
+	background: #7e0000;
 }
 
 .footer-link-list {

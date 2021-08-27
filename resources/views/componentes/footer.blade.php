@@ -4,7 +4,7 @@
         <div class="col-sm-6 col-lg-4 col-xl-3">
           <div class="oh-desktop">
             <div class="wow {{-- slideInRight --}}" data-wow-delay="0s">
-              <div class="footer-brand"><a href="index.html"><img src="{{asset('images/logo_turza.png')}}" alt="" width="196" height="42"/></a></div>
+              <div class="footer-brand unit-body"><a href="index.html"><img src="{{asset('images/logo_turza.png')}}" alt="" width="196" height="42"/></a></div>
               <p>Alimento Soloalimentos, C.A. empresa dedicada a la elaboración y distribución de alimentos</p>
               <ul class="footer-contacts d-inline-block d-md-block">
                 <li>

@@ -41,6 +41,7 @@ Productos
                           
                             @foreach ($clientes as $item)
                               <option value="{{$item->id}}">{{$item->razon_social}}</option>
+                              
                             @endforeach
                         </select>
                     </div>

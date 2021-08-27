@@ -38,7 +38,7 @@ Turza | Usuarios
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        <table id="example" class="table">
+        <table id="roles" class="table">
           <thead class=" text-primary">
             <th>#</th>
       
@@ -48,7 +48,7 @@ Turza | Usuarios
             <th>Acciones</th>
           </thead>
           <tbody>
-            @foreach($users as $user)
+       {{--      @foreach($users as $user)
                 
           
           <tr>
@@ -58,14 +58,12 @@ Turza | Usuarios
             <td>{{$user->Role->nombre}}</td>
             <td>{{$user->created_at->format('d-m-Y')}}</td>
             <td>
-            {{--   <a type="button" href="{{route('/usuarios.edit/'.$user->id.'/edit')}}"  id="modificarUsuario" data-toggle="modal" data-target="#frmModificar" > <span class="material-icons yellow">
-                create
-                </span></a> --}}
-              <a type="button" href="{{url('/usuarios/'.$user->id.'/edit')}}" data-id="{{$user->id}}" {{-- rel="tooltip" title="Modificar" --}} class="btn btn-warning btn-sm" id="modificarUsuario" name="id"  onclick="obtenerVendedor('{{$user->id}}')"  data-toggle="modal" data-target="#frmModificarUsuario" >
+      
+              <button href="{{url('/usuarios/'.$user->id.'/edit')}}" data-id="{{$user->id}}"  class="btn btn-warning btn-sm" id="edit" name="id"    data-toggle="modal" data-target="#frmModificarUsuario" >
                   <span class="material-icons ">
                     create
                     </span>
-                  </a>
+                  </button>
                 @if  (auth()->user()->hasRoles(['Administrador']))
                 <form method="post" action="{{url('/usuarios/'.$user->id)}}" style="display:inline">
                   {{ csrf_field() }}
@@ -74,20 +72,13 @@ Turza | Usuarios
                   <i class="material-icons">close</i>
                 </a>
               </form>
-
-               {{--  <form method="post" action="{{url('/usuario/'.$usuario->id)}}" style="display:inline">
-                  {{ csrf_field() }}
-                  {{method_field('DELETE')}}
-                  <button type="submit" onclick="return confirm('borrar?');" class="btn btn-danger border-bottom-danger btn-sm " href="#">Eliminar</button>
-                  </form> --}}
+ 
                 @endif
-            {{--   <a type="button" href="#" > <span class="material-icons red600">
-                delete_outline
-                </span></a> --}}
+ 
             </td>
         
           </tr>
-          @endforeach
+          @endforeach --}}
          
         </tbody>
         </table>
@@ -101,76 +92,62 @@ Turza | Usuarios
 
 <script>
 
-  function obtenerVendedor(id){
-  var route = "{{url('usuarios')}}/"+id+"/edit";
-  $.get(route, function(data){
-    
-    
-    $('#email').val(data.email);
-    $('#password').val(data.password);
-  /*   $("select[name='role_id'").html(data.role_id); */
-  $('#role_id').val(data.role_id).html(data);
-  alert(data.role_id)
- /*  $("#role_id").on('change', function () {
-      
-            role_id=$(this).val();
-            alert(role_id);
-       	
-       
-   }); */
+ 
+
+
+ 
+  $(document).ready(function() {
+
+
+
+
+    // Data Display Code
+    var table = $('#roles').DataTable( {
+                ajax: "{{ url('usuariosindex') }}",
+                columns: [
+                    { "data": "email" },
+                    { "data": "role_id" },
+                    { "data": "created_at" },
+                    { 
+                        "data": null,
+                        render: function(data, type, row) {
+                            return `<button data-id="${row.id}" class="btn btn-info" data-toggle="modal" data-target="#frmModificarUsuario" id="edit"><i class="fa fa-edit"></i></button>`;
+                        }
+                    },
+                    { 
+                        "data": null,
+                        render: function(data, type, row) {
+                            return `<button data-id="${row.id}" class="btn btn-danger" id="delete"><i class="fa fa-trash"></i></button>`;
+                        }
+                    }
+                ]
+            } );
+
+
+// edit city code goes here
+                $(document).on('click', '#edit', function() {
+                    $.ajax({
+                        url: "{{url('usuarios')}}/"+id+"/edit",
+                        type: "get",
+                        dataType: 'json',
+                        data: {
+                            "_token": "{{ csrf_token() }}",
+                            "id": $(this).data('id')
+                            
+                        },
+                        success: function(response) {
+                          alert(response);
+                        $('select[name="role_id"]').val(response.data.role_id);
+                     /   $('input[name="email"]').val(response.data.email);
+                 
+                            
+                        }
+                    });
+                });
+
   });
 
-  
-   
  
- 
-  /* var plantSelect = $('#role_id');
-  function populatePlantSelect() {
-        $.ajax({
-            url: "{{ route('usuarios.create') }}",
-            type: 'GET',
-            dataType: 'json',
-            success: function (response) {
-                $.each(response.data, function (key, value) {
-                    plantSelect.append("<option value='" + value.id + "'>" + value.name + "</option>");
-                });
-            },
-            error: function () {
-                alert('Hubo un error obteniendo las plantas!');
-            }
-        });
-    } */
-  /*  
-     $(document).ready(function(){
-
-$(".role_id").click(function(){
-  var role=data.role_id;
-     var id = $(this).attr('id');  
-    console.log(role);
-    var parametros={"role":role};  
-               
-            $.ajax({
-                data: parametros,
-                url: "{{url('usuarios')}}/"+id+"/edit",
-                type:  'get',
-                beforeSend: function () {},
-                    success:  function (response) {    
-                    $(".role_id").html(response);
-
-                    setTimeout(() => {
-                        $(".role_id").empty();  
-                    }, 2000);
-                },
-                error:function(){
-                    alert("error")
-                }
-            }); // fin de ajax/ 
-}); // fin de click 
-});  
-  */
- }  
-
-
 
    
 </script>

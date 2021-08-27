@@ -73,7 +73,8 @@ Route::get('/', function () {
 Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
 
 Route::resource('/usuarios', 'UsuarioController');
-
+Route::post('/usuariosindex', 'UsuarioController@index');
+/* Route::post('/usuariosedit', 'UsuarioController@editt'); */
 Route::resource('/clientes', 'ClientesController');
 
 Route::resource('/productad', 'ProductAdController');
@@ -93,6 +94,6 @@ Route::get('/pedidos/{pedido}/mostrarOrden', 'PedidosController@mostrarOrden')->
 
 Route::resource('/vendedor', 'VendedorController');
 Route::resource('/costos', 'CostosController');
-Route::get('/usuarios/{id}/edit', 'UsuarioController@getrole')->name('getrole');
+Route::get('/usuarios/{getrole}/getrole', 'UsuarioController@getrole')->name('getrole');
 
  

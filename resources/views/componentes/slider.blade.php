@@ -1,6 +1,6 @@
 <section class="section swiper-container swiper-slider swiper-slider-modern" data-loop="true" data-autoplay="5000" data-simulate-touch="true" data-nav="true" data-slide-effect="fade">
   <div class="swiper-wrapper text-left">
-      <div class="swiper-slide context-dark" data-slide-bg="images/pgh-1.png">
+      <div class="swiper-slide context-dark" data-slide-bg="images/mujer.png">
         <div class="swiper-slide-caption">
           <div class="container">
             <div class="row justify-content-center justify-content-xxl-start">
