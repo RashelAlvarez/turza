@@ -24,7 +24,7 @@ class CreateClientesTable extends Migration
             $table->text('direccion');
             $table->integer('vendedor_id')->nullable();
             $table->string('file')->nullable();
-            $table->string('email')->unique();
+           
             $table->timestamps();
         });
     }

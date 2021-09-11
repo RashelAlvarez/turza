@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\PrecioProducto;
 class Producto extends Model
 {
     //
@@ -19,7 +19,7 @@ class Producto extends Model
     }
 
     public function precio(){
-        return $this->belongsTo(Precio_Unitario::class);
+        return $this->hasMany(PrecioProducto::class);
     }
 
 }

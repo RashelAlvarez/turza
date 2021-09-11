@@ -21,11 +21,11 @@ Turza | Vendedores
 @endif
 
 
-@if  (auth()->user()->hasRoles(['Administrador']))
+@if  (auth()->user()->hasRoles(['Administrador', 'Operador']))
 <button type="submit" data-toggle="modal" data-target="#crearVendedor"  class="btn btn-success mb-3 ">Nuevo Vendedor</button>
 
 
-@endif
+
 
 <div class="col-md-12">
     <div class="card">
@@ -37,13 +37,14 @@ Turza | Vendedores
     
         <div class="table-responsive">
           
-          @if  (auth()->user()->hasRoles(['Administrador', 'Operador']))
+          
 
           <table   id="example" class="table">
             <thead class=" text-primary">
                 <th>#</th>
-                <th>Correo</th>
-                <th>Rif</th>
+               
+                <th>Nombre</th>
+                <th>Apellido</th>
                 <th>Dirección</th>
                 <th>Teléfono</th>
                 <th>Modificar</th> 
@@ -53,8 +54,9 @@ Turza | Vendedores
             @foreach ($vendedor as $item)
                <tr>   
             <td>{{$loop->iteration}}</td>
-            <td >{{$item->email}}</td>
-            <td >{{$item->rif}}</td>
+            
+            <td >{{$item->nombre}}</td>
+            <td >{{$item->apellido}}</td>
             <td >{{$item->direccion}}</td>
             <td >{{$item->telefono}}</td>
             <td>
@@ -75,7 +77,7 @@ Turza | Vendedores
           </tbody>
          
           </table>
-          @endif
+         
           
         </div>
       </div>
@@ -85,4 +87,6 @@ Turza | Vendedores
 
   @include('admin/material/frm/vendedor')
   
-@endsection
+@endif
+
+  @endsection

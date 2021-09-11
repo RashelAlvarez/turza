@@ -74,9 +74,9 @@
               </p>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-              <a class="dropdown-item" href="#">Perfil</a>
- {{--              <a class="dropdown-item" href="#">Settings</a> --}}
-              <div class="dropdown-divider"></div>
+              {{-- <a class="dropdown-item" href="#">Perfil</a> --}}
+ 
+       
               <a class="dropdown-item"  href="{{ route('logout') }}"   onclick="event.preventDefault();
               document.getElementById('logout-form').submit();"><i class="material-icons">exit_to_app</i>    Cerrar Sesión</a>
                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

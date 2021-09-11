@@ -39,12 +39,7 @@
                     </div>
                   </div>
                 
-              {{--     <div class="col-sm-12">
-                    <div class="form-group">
-                        <input type="file" class="form-control-file" name="file"  placeholder="archivo" value="{{$item->file}}">
-                        <span class="text-danger">{!! $errors->first('file', '<span class=error>:message</span>') !!}</span>
-                    </div>
-                  </div> --}}
+             
                   
 
         

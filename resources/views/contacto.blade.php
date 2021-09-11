@@ -31,8 +31,8 @@ Contacto
             <div class="box-contacts-body">
               <div class="box-contacts-icon fl-bigmug-line-cellphone55"></div>
               <div class="box-contacts-decor"></div>
-              <p class="box-contacts-link"><a href="tel:#">+58 424-913-4688</a></p>
-              <p class="box-contacts-link"><a href="tel:#">+58 412-888-4554</a></p>
+              <p class="box-contacts-link"><a href="tel:#">+58 0424-400-3231</a></p>
+             
             </div>
           </article>
         </div>
@@ -50,8 +50,7 @@ Contacto
             <div class="box-contacts-body">
               <div class="box-contacts-icon fl-bigmug-line-chat55"></div>
               <div class="box-contacts-decor"></div>
-              <p class="box-contacts-link"><a href="mailto:#">somosturza@gmail.com</a></p>
-              <p class="box-contacts-link"><a href="mailto:#">ventas.somosturza@gmail.com</a></p>
+                <p class="box-contacts-link"><a href="mailto:#">ventas.somosturza@gmail.com</a></p>
             </div>
           </article>
         </div>
@@ -70,14 +69,11 @@ Contacto
                </figure>
               <address class="text-center">
                             <dl>
-                                <dt><p>Alimento Solo Alimentos,C.A.<br>
+                                <dt><p>Alimento SoloAlimentos,C.A.<br>
                                     Zona Industrial, Los Jarales<br>
                                     San Diego. Carabobo</p>
                                 </dt>
-                            {{--     <dd><span>Gerente General: </span>Jesús Sevilla</dd>
-                                <dd><span>Teléfono: </span>+58 412 559 6580</dd>
-                                <dd><span>Gerente de Ventas: </span>Harold Caballero</dd>
-                                <dd><span>Teléfono: </span>+58 412 559 6580</dd> --}}
+                     
                             </dl>
                          </address>
  
@@ -88,17 +84,20 @@ Contacto
           <h3>{{session('info')}}</h3>
         @else
         <div class="col-lg-6">
-          <h4 class="text-spacing-50">Formulario de Contacto</h4>
-          <form   method="post" action="contacto">
+          <h3 class="text-spacing-50">¿Quieres tener un código cliente?</h3>
+          <br>
+          <h6 class="text-spacing-50">Ingresa tus datos y muy pronto serás contactado.</h6>
+          <form   method="post" action="{{route('contacto.store')}}" enctype="multipart/form-data">
             {!! csrf_field()  !!}
             <div class="row row-14 gutters-14">
               <div class="col-sm-6">
                 <div class="form-wrap">
                   <input class="form-input" id="contact-first-nombre" type="text" name="nombre"  value="{{old('nombre')}}">
                   <span class="text-danger">{!! $errors->first('nombre', '<span class=error>:message</span>') !!}</span>
-                  <label class="form-label" for="contact-first-nombre">Nombre</label>
+                  <label class="form-label" for="contact-first-nombre">Persona de Contacto</label>
                 </div>
               </div>
+           
               <div class="col-sm-6">
                 <div class="form-wrap">
                   
@@ -107,40 +106,42 @@ Contacto
                   <label class="form-label" for="contact-last-razonsocial">Razón Social</label>
                 </div>
               </div>
-              <div class="col-mr-sm-2">
+              <div class="col-sm-6">
                 <div class="form-wrap">
-                  <select class="form-select" id="contact-first-prefijorif" name="prefijorif">
-                    <option selected>--</option>
-                      <option value="1">V</option>
-                      <option value="2">J</option>
-                      
-                  </select>
-              
-                </div>
-              </div>
-              <div class="col-sm-mr-4">
- 
-                <div class="form-wrap">
-
-                  <input class="form-input" id="contact-last-rif" type="text" name="rif" value="{{old('rif')}}" >
+                  <input class="form-input" id="contact-last-rif" type="text" name="rif" value="{{old('rif')}}">
                   <span class="text-danger">{!! $errors->first('rif', '<span class=error>:message</span>') !!}</span>
                   <label class="form-label" for="contact-last-rif">Rif</label>
                 </div>
               </div>
+            
               <div class="col-sm-6">
                 <div class="form-wrap">
                   <input class="form-input" id="contact-last-telefono" type="text" name="telefono" value="{{old('telefono')}}" >
                   <span class="text-danger">{!! $errors->first('telefono', '<span class=error>:message</span>') !!}</span>
-                  <label class="form-label" for="contact-last-telefono">Telefono</label>
+                  <label class="form-label" for="contact-last-telefono">Teléfono</label>
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-wrap">
-                  <input class="form-input" id="contact-correo" type="email" name="correo" value="{{old('correo')}}" >
-                  <span class="text-danger">{!! $errors->first('correo', '<span class=error>:message</span>') !!}</span>
-                  <label class="form-label" for="contact-correo">Correo</label>
+                  <input class="form-input" id="contact-email" type="email" name="email" value="{{old('email')}}" >
+                  <span class="text-danger">{!! $errors->first('email', '<span class=error>:message</span>') !!}</span>
+                  <label class="form-label" for="contact-email">Correo Electrónico</label>
                 </div>
               </div>
+              
+              <div class="col-12">
+                <div class="form-group"> <H6>
+                  <b>El archivo debe contener los siguientes requisitos, para ser procesada su solicitud  en formato PDF.</b>
+                  <label class="">
+                    Registro mercantil, cédula del representante legal y RIF</label></H6>
+                  
+                  <input class="form-input" id="contact-fcontacto" type="file" name="fcontacto" value="{{old('fcontacto')}}" >
+                  <span class="text-danger">{!! $errors->first('fcontacto', '<span class=error>:message</span>') !!}</span>
+                  
+                </div>
+              </div>
+
+           
               <div class="col-12">
                 <div class="form-wrap">
                   <label class="form-label" for="contact-comentario">Comentario</label>

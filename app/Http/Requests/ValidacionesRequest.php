@@ -27,14 +27,18 @@ class ValidacionesRequest extends FormRequest
         return [
             //
             'nombre' => 'required',
-            'apellido' => 'required',
-            'razon_social' => 'required|string|max:100|unique:clientes',
+          
+            'razonsocial' => 'required|string|max:100',
             'rif' => 'required|max:10',
             'telefono' => 'required|max:11',
             'direccion' => 'required|min:10',
             'vendedor_id' => 'required',
             'file' => 'required', 
-            'email' => 'required|email|unique:clientes',
+            'mercantil' => 'required',
+            'cedula' => 'required',
+            'rif_file' => 'required',
+            'comentario' => 'required',
+            'email' => 'required|email',
         ];
     }
 }

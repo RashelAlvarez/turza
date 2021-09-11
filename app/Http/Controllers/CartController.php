@@ -22,22 +22,28 @@ class CartController extends Controller
         
         ]);
     }
-
+   
      
 
     public function add(Request $request){
-        $productos = Producto::find($request->producto_id);
+      /*   $productos = Producto::find($request->producto_id); */
+        $productos=DB::table('precio_producto')
+        ->select('productos.id', 'productos.nombre', 'productos.descripcion', 'productos.image', 'precio_producto.precio_unitario')
+        ->join('productos', 'precio_producto.idproducto', '=', 'productos.id')
+        ->where('productos.id', $request->producto_id)
+        ->get(); 
+        /* dd($productos); */
       /*   $subtotal= [];
         $subtotal= Cart::getSubTotal();
          $finalTotal = array_sum($subtotal); */
         Cart::add(
-            $productos->id,
-            $productos->nombre,
+            $productos[0]->id,
+            $productos[0]->nombre,
        
-            $productos->precio,
+            $productos[0]->precio_unitario,
             $request->quantity,
              
-            array("descripcion"=>$productos->descripcion)
+            array("descripcion"=>$productos[0]->descripcion)
             
            
           

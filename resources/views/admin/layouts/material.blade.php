@@ -256,17 +256,17 @@
  <script src="{{asset('/js/core/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
  <script src="{{('/js/core/plugins/moment.min.js')}}"></script>
  <script src="{{asset('/js/core/plugins/jquery.bootstrap-wizard.js')}}"></script>
-{{--  <script src="{{asset('/js/core/plugins/jquery.dataTables.min.js')}}"></script> --}}
+ <script src="{{asset('/js/core/plugins/jquery.dataTables.min.js')}}"></script>
  <script src="{{asset('/js/core/plugins/bootstrap-tagsinput.js')}}"></script>
  <script src="{{asset('/js/core/plugins/jasny-bootstrap.min.js')}}"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
  <script src="{{asset('/js/core/plugins/arrive.min.js')}}"></script>
   <script src="{{asset('/js/core/material-dashboard.js')}}" type="text/javascript"></script>
-{{--   <script src="{{asset('/js/core/demo.js')}}"></script> --}}
+  <script src="{{asset('/js/core/demo.js')}}"></script>
   <script src="{{asset('/js/core/core.min.js')}}"></script>
   <script src="{{asset('/js/app.js')}}"></script>
 
- {{--  <script type="text/javascript" charset="utf-8">
+  <script type="text/javascript" charset="utf-8">
     $(document).ready(function() {
        $('#example').dataTable( {
  
@@ -290,7 +290,7 @@
 }
   } );
 } );
-  </script> --}}
+  </script>
   
   
   

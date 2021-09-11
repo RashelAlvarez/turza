@@ -19,7 +19,7 @@ Turza | Pedido
   {{ session('pedido') }}
 </div>
 @endif
-{{-- {{Analytics::fetchMostVisitedPages(Period::days(7))}} --}}
+
 
 <div class="col-md-12">
     <div class="card">
@@ -33,7 +33,7 @@ Turza | Pedido
         <div class="table-responsive">
           @if  (auth()->user()->hasRoles(['Cliente']))
         
-          <table  class="table">
+          <table id="example" class="table">
             <thead class=" text-primary">
                 <th># de Orden</th>
                 <th>Total</th>
@@ -75,7 +75,7 @@ Turza | Pedido
          
           </table>
 
-
+ 
           @endif
 
           @if  (auth()->user()->hasRoles(['Administrador', 'Operador']))

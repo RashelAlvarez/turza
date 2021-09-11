@@ -26,7 +26,7 @@ class VendedorRequest extends FormRequest
         return [
             //
 
-            'user_id' => 'required|unique:vendedors',
+           
             'nombre' => 'required',
             'apellido' => 'required',
             'rif' => 'required|string',

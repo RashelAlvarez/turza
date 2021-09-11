@@ -5,19 +5,20 @@
           <div class="oh-desktop">
             <div class="wow {{-- slideInRight --}}" data-wow-delay="0s">
               <div class="footer-brand unit-body"><a href="index.html"><img src="{{asset('images/logo_turza.png')}}" alt="" width="196" height="42"/></a></div>
-              <p>Alimento Soloalimentos, C.A. empresa dedicada a la elaboración y distribución de alimentos</p>
+              <p class="text">Alimento Soloalimentos, C.A. es una empresa dedicada a la elaboración y distribución de alimentos</p>
               <ul class="footer-contacts d-inline-block d-md-block">
                 <li>
                   <div class="unit unit-spacing-xs">
                     <div class="unit-left"><span class="icon fa fa-phone"></span></div>
-                    <div class="unit-body"><a class="link-phone" href="tel:#">+58 412-4123-663</a></div>
+                    <div class="unit-body"><a class="link-phone" href="tel:#">+58 424-4003231</a></div>
                   </div>
                 </li>
                 <li>
                   <div class="unit unit-spacing-xs">
                     <div class="unit-left"><span class="icon fa fa-clock-o"></span></div>
                     <div class="unit-body">
-                      <p>Lun-Vi: 07:00AM - 04:00PM</p>
+                      <p>Lun-Vi: 07:30 AM - 04:30 PM</p>
+                      <p>Sáb: 07:30 AM - 12:00 PM</p>
                     </div>
                   </div>
                 </li>
@@ -41,10 +42,10 @@
              
                 <div>
                   <ul class="list-inline list-inline-sm footer-social-list-2">
-                    <li><a class="icon fa fa-facebook" href="https://www.facebook.com/Somos-Turza-113124033937511"></a></li>
-                    <li><a class="icon fa fa-twitter" href="https://www.twitter.com/somosturza/"></a></li>
+                    <li><a href="https://www.facebook.com/Somos-Turza-113124033937511"><img src="{{asset('images/facebook.png')}}" alt="" width="30" height="30"/></a></a></li>
+                    <li><a   href="https://www.twitter.com/somosturza/"><img src="{{asset('images/twitter.png')}}" alt="" width="30" height="30"/></a></li>
                     
-                    <li><a class="icon fa fa-instagram" href="https://www.instagram.com/somosturza/"></a></li>
+                    <li><a  href="https://www.instagram.com/somosturza/"><img src="{{asset('images/instagram.png')}}" alt="" width="30" height="30"/></a></li>
                     
                   </ul>
                 </div>

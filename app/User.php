@@ -20,7 +20,7 @@ class User extends Authenticatable
     
     public $table = 'users';
     protected $fillable = [
-        'role_id','email', 'password', 
+        'role_id', 'estatusid','email', 'password', 
     ];
  
    
@@ -72,6 +72,10 @@ class User extends Authenticatable
         return $this->belongsTo(Pedido::class);
 
     } 
+
+    public function estatus(){
+        return $this->hasOne(Estatus::class);
+    }
 
     
     

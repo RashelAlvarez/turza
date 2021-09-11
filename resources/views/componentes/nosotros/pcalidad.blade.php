@@ -20,7 +20,7 @@
                     <li>Proporcionar un sano retorno para los accionistas, en un ambiente socialmente responsable. </li>
                   </ul>
                 </div>
-                <h5 class="quote-lisa-cite">Bakhos Najem Bakhos</h5>
+               {{--  <h5 class="quote-lisa-cite">Bakhos Najem Bakhos</h5> --}}
                 <h5 class="quote-lisa-cite">Presidente</h5>
                <!--  <p class="quote-lisa-status">Regular Client</p> -->
               </div>

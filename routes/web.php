@@ -38,9 +38,9 @@ Route::get('recetas', 'RecetasController@index' );
 Route::get('productos', 'ProductosController@index' );
 Route::get('login', 'LoginController@showLoginForm' );
 
-Route::get('contacto', 'ContactoController@index' );
-
-Route::post('contacto', 'ContactoController@store' )->name('contacto-create'); 
+/* Route::get('contacto', 'ContactoController@index' ); */
+Route::resource('contacto', 'ContactoController');
+/* Route::post('contacto', 'ContactoController@store' )->name('contacto-create');  */
 /* Route::get('registrar', 'RegistroController@index' );
 Route::post('registrar', 'RegistroController@store')->name('registrar.store'); */
 

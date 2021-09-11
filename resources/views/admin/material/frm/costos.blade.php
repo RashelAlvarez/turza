@@ -40,8 +40,8 @@
                
                   <div class="col-sm-12">
                     <div class="form-group {{ $errors->has('precio') ? 'has-error' : ''}}">
-                      <label class="bmd-label-floating">Precio Unitario:</label>
-                        <input type="number" class="form-control" name="precio"    value="{{old('precio')}}">
+                      <label class="bmd-label-floating">Precio Unitario: ejemplo 17.00 o 17.50</label>
+                        <input type="text" class="form-control" name="precio"    value="{{old('precio')}}">
                         <span class="text-danger">{!! $errors->first('precio', '<span class=error>:message</span>') !!}</span>
                      </div>
                   </div>

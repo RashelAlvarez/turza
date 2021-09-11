@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\PrecioProducto;
 use App\Producto;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -18,7 +20,7 @@ class ProductAdController extends Controller
     {
         $this->middleware([
             
-            'auth',
+            'auth', 'roles:Cliente'
         
         ]);
     }
@@ -26,13 +28,26 @@ class ProductAdController extends Controller
     public function index()
     {
         //
-      /*   $productos=Producto::all(); */
-      
-      $clientes=DB::table('clientes')
-      ->select('id', 'razon_social')
-      ->get();
+    
+    $productos=DB::table('precio_producto')
+    ->join('productos', 'precio_producto.idproducto', '=', 'productos.id')
+    ->join('clientes', 'precio_producto.idcliente', '=', 'clientes.id')
+    ->select('productos.id', 'productos.nombre', 'productos.descripcion', 'productos.image', 
+    'productos.impuesto', 'precio_unitario')
+    ->where('clientes.user_id', auth()->user()->id)
+    ->get();
 
-      return view('admin.material.productos', compact('clientes'));
+    
+      
+    
+
+    $productos3=Producto::all();
+
+   
+
+   
+    
+      return view('admin.material.productos', compact('productos', 'productos3'));
       
      
     }
@@ -99,8 +114,15 @@ class ProductAdController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id){
-        $productos = Producto::findOrFail($id);
-       return view('admin.material.detalle', compact('productos')); 
+       $productos=DB::table('precio_producto')
+        ->select('productos.id', 'productos.nombre', 'productos.descripcion', 'productos.image', 'precio_producto.precio_unitario')
+        ->join('productos', 'precio_producto.idproducto', '=', 'productos.id')
+        ->where('productos.id', $id)
+        ->get(); 
+   /*       $productos = Producto::findOrFail($id);  
+         $precio= PrecioProducto::where('productos.id', $id); */
+        /*  dd($productos); */
+       return view('admin.material.detalle', compact('productos', 'precio')); 
       /*  return $id; */ 
       
    }

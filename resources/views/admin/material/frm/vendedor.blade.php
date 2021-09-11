@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group {{ $errors->has('rif') ? 'has-error' : ''}}">
-                        <label class="bmd-label-floating"> Rif</label>
+                        <label class="bmd-label-floating"> Rif o Cédula</label>
                         <input type="text" class="form-control" name="rif"    value="{{old('rif')}}">
                         <span class="text-danger">{!! $errors->first('rif', '<span class=error>:message</span>') !!}</span>
                     </div>
@@ -47,7 +47,7 @@
                         <span class="text-danger">{!! $errors->first('telefono', '<span class=error>:message</span>') !!}</span>
                      </div>
                   </div>
-                  <div class="col-sm-12">
+                {{--   <div class="col-sm-12">
                     <div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}"> 
                       <select class="select form-control-sm custom-select" id="user_id" name="user_id">
                           <option selected disabled>Selecciona el Usuario</option>
@@ -58,7 +58,7 @@
                         </select>
                         <span class="text-danger">{!! $errors->first('user_id', '<span class=error>:message</span>') !!}</span>
                     </div>
-                  </div>
+                  </div> --}}
                
 
                   @if (session('exito'))

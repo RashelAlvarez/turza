@@ -14451,7 +14451,7 @@ h2.title {
 }
 
 .text-primary {
-  color: #9c27b0 !important;
+  color: #c0141c !important;
 }
 
 .text-danger {
@@ -15498,11 +15498,17 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(255, 152, 0, 0.4);
 }
 
+
+/***********************************MENU SIDEBAR**********************************************************/
+
+
 .sidebar[data-color="danger"] li.active>a {
-  background-color: #f44336;
+  background-color: #c0141c;
   box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(244, 67, 54, 0.4);
 }
 
+
+/*********************************************************************************************************/
 .sidebar[data-color="rose"] li.active>a {
   background-color: #e91e63;
   box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4);
@@ -17536,7 +17542,7 @@ html[dir="rtl"] .form-check .form-check-sign .check:before {
 .card.bg-primary,
 .card.card-rotate.bg-primary .front,
 .card.card-rotate.bg-primary .back {
-  background: linear-gradient(60deg, #ab47bc, #8e24aa);
+  background: linear-gradient(60deg, #c0141c, #c20710);
 }
 
 .card .card-header-info .card-icon,
@@ -17587,7 +17593,7 @@ html[dir="rtl"] .form-check .form-check-sign .check:before {
 .card .card-header-primary .card-icon,
 .card .card-header-primary:not(.card-header-icon):not(.card-header-text),
 .card .card-header-primary .card-text {
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px #c0141c;
 }
 
 .card .card-header-danger .card-icon,
@@ -20013,7 +20019,6 @@ Copyright (c) 2015 Daniel Eden
 
 
 
-
 .button-block {
 	display: block;
 	width: 100%;
@@ -21922,10 +21927,10 @@ img {
   color: rgb(166, 189, 33);
 }
 
- .unit-lefta{
+/*  .unit-lefta{
    width: 100px;
    height: 100px;
- }
+ } */
 
  .items{
    width: auto;

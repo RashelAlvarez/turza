@@ -10,7 +10,7 @@
         <form class="form"  method="post" action="{{route('clientes.store')}}" enctype="multipart/form-data">
             {!! csrf_field()  !!}
             <div class="modal-body" id="body">
-            
+              
             <div class="row">
               <div class="col-sm-12 ">
                 <div class="form-group {{ $errors->has('nombre') ? 'has-error' : ''}}">
@@ -54,13 +54,7 @@
                         <span class="text-danger">{!! $errors->first('direccion', '<span class=error>:message</span>') !!}</span>
                     </div>
                   </div>
-                  <div class="col-sm-12">
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="email"  value="{{old('email')}}">
-                        <label class="bmd-label-floating">Correo</label>
-                        <span class="text-danger">{!! $errors->first('email', '<span class=error>:message</span>') !!}</span>
-                    </div>
-                  </div>
+                 
                 
                  
                   

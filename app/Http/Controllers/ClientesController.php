@@ -36,16 +36,14 @@ class ClientesController extends Controller
         $clientes=Cliente::all();
         $clientes2=DB::table('clientes')
         ->select('clientes.id', 'clientes.nombre', 'clientes.apellido', 'razon_social', 'clientes.rif', 'clientes.telefono', 
-        'clientes.direccion', 'clientes.email', 'users.email as usvendedor', 'clientes.created_at', 'clientes.file' )
+        'clientes.direccion', 'vendedors.nombre as usvendedor', 'clientes.created_at', 'clientes.file' )
         ->join('vendedors', 'clientes.vendedor_id', '=', 'vendedors.id')
-        ->join('users', 'vendedors.user_id', '=', 'users.id' )
-        ->where('vendedors.user_id', auth()->user()->id)
+       
         ->get();
 
         $vendedor=DB::table('vendedors')
         ->select('vendedors.id', 'vendedors.nombre', 'vendedors.apellido')
-        ->join('users', 'vendedors.user_id', '=', 'users.id')
-        ->where('vendedors.user_id', auth()->user()->id)
+       
         ->get();
         $user=DB::table('users')
         ->select('users.id', 'users.email')
@@ -85,7 +83,7 @@ class ClientesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ValidacionesRequest $request)
+    public function store(Request $request)
     {
 
        /*  dd($request->all()); */
@@ -100,7 +98,7 @@ class ClientesController extends Controller
              'direccion' => $request->input('direccion'), 
              'vendedor_id' => $request->input('vendedor_id'),
              'file' => $request->file('file')->storeAs('public', $request->file->getClientOriginalName()),
-             'email' =>$request->input('email'),
+            
              "created_at" => Carbon::now(),
              "updated_at" => Carbon::now(),
            

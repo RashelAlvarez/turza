@@ -46,13 +46,13 @@
 
              
 
-                      @foreach ($estado as $item)
+               {{--        @foreach ($estado as $item)
              
                     <option value="{{$item->id}}" @if ($pedido->estado== $item) selected='selected'
                       @endif 
                       > {{$item->nombre }}</option>
                 
-                      @endforeach
+                      @endforeach --}}
                     </select>
                     <span class="text-danger">{!! $errors->first('estado', '<span class=error>Seleccione una opción</span>') !!}</span>
                   </div>

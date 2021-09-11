@@ -38,7 +38,7 @@ Turza | Usuarios
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        <table id="roles" class="table">
+        <table id="example" class="table">
           <thead class=" text-primary">
             <th>#</th>
       
@@ -48,7 +48,7 @@ Turza | Usuarios
             <th>Acciones</th>
           </thead>
           <tbody>
-       {{--      @foreach($users as $user)
+            @foreach($users as $user)
                 
           
           <tr>
@@ -64,21 +64,12 @@ Turza | Usuarios
                     create
                     </span>
                   </button>
-                @if  (auth()->user()->hasRoles(['Administrador']))
-                <form method="post" action="{{url('/usuarios/'.$user->id)}}" style="display:inline">
-                  {{ csrf_field() }}
-                  {{method_field('DELETE')}}
-                <a type="submit" rel="tooltip" title="Eliminar" class="btn btn-danger  btn-sm">
-                  <i class="material-icons">close</i>
-                </a>
-              </form>
- 
-                @endif
+            
  
             </td>
         
           </tr>
-          @endforeach --}}
+          @endforeach
          
         </tbody>
         </table>
@@ -128,7 +119,7 @@ Turza | Usuarios
                 $(document).on('click', '#edit', function() {
                     $.ajax({
                         url: "{{url('usuarios')}}/"+id+"/edit",
-                        type: "get",
+                        type: "post",
                         dataType: 'json',
                         data: {
                             "_token": "{{ csrf_token() }}",
@@ -137,8 +128,8 @@ Turza | Usuarios
                         },
                         success: function(response) {
                           alert(response);
-                        $('select[name="role_id"]').val(response.data.role_id);
-                     /   $('input[name="email"]').val(response.data.email);
+                       
+                       $('input[name="email"]').val(response.data.email);
                  
                             
                         }

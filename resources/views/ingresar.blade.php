@@ -9,7 +9,7 @@ Ingreso de Usuario
     <div class="container">
       <div class="form-center">
         <div class="col-lg-6">
-            {{-- <h4 class="text-center">Ingreso de Usuario</h4> --}}
+      
             <div class="oh">
                 <h2 class="wow slideInUp mb-5 text-center" data-wow-delay="0s">Ingreso de Usuario</h2>
             </div>
@@ -36,9 +36,9 @@ Ingreso de Usuario
             </div>
             </form>
 
-            <div class="registro mt-3">
-                <p>¿No eres cliente?,  <a class="clic"href="{{url('registrar')}}">Haz clic aqui</a> para registrarte.</p>
-            </div>
+           {{--  <div class="registro mt-3">
+                <p>¿Olvidaste tu contraseña?,  <a class="clic"href="{{url('registrar')}}">Haz clic aqui</a> para recuperarla.</p>
+            </div> --}}
         </div>
       </div>
     </div>

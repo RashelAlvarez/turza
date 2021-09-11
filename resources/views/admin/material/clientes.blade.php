@@ -49,7 +49,7 @@ Turza | Clientes
             <th>Teléfono</th>
             <th>Dirección</th>
            {{--        <th>Archivo</th> --}}
-            <th>Correo</th>
+          
             <th>Vendedor</th>
             <th>Fecha de creación</th>
              <th>Acciones</th>
@@ -77,7 +77,7 @@ Turza | Clientes
                       
                               
                       </td> --}}
-                    <td>{{$item->email}}</td>
+                   
                     <td>{{$item->usvendedor}}</td>
                     <td>{{Carbon\Carbon::parse($item->created_at)->format('d-m-Y')}}</td>
           
@@ -110,7 +110,7 @@ Turza | Clientes
             <th>Teléfono</th>
             <th>Dirección</th>
                   <th>Archivo</th>
-            <th>Correo</th>
+           
             <th>Vendedor</th>
             <th>Fecha de creación</th>
              <th>Acciones</th>
@@ -137,7 +137,7 @@ Turza | Clientes
                       </a>
                               
                       </td>
-                    <td>{{$item->email}}</td>
+                   
                     <td>{{$item->usvendedor}}</td>
                     <td>{{Carbon\Carbon::parse($item->created_at)->format('d-m-Y')}}</td>
                     <td>

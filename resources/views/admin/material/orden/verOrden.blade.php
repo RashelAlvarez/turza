@@ -15,6 +15,9 @@ Turza | Pedido
 @section('contenido')  
 
 <div class="col-md-12">
+  <a href="{{route('pedidos.index')}}" class="btn btn-success"><span class="material-icons">
+    reply
+    </span> Regresar</a>
   <div class="card">
     <div class="card-header card-header-primary">
       <h4 class="card-title ">Pedido</h4>
@@ -45,7 +48,7 @@ Turza | Pedido
             <tr>
               <td>{{$item->nombre}}</td>
               <td>{{$item->cantidad}}</td>
-              <td>${{$item->precio}}</td>
+              <td>${{$item->precio_unitario}}</td>
               <td>${{$item->total}}</td>
             </tr>
     
@@ -80,9 +83,7 @@ Turza | Pedido
     </div>
    
   </div>
-  <a href="{{route('pedidos.index')}}" class="btn btn-success"><span class="material-icons">
-    reply
-    </span> Regresar</a>
+
 </div>
      
 @endsection

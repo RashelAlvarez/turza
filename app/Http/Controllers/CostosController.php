@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use App\Cliente;
-use App\Precio_Unitario;
+use App\PrecioProducto;
 use App\Producto;
 use Carbon\Carbon;
+use App\Http\Requests\CostosRequest;
+
 
 class CostosController extends Controller
 {
@@ -47,11 +49,11 @@ class CostosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CostosRequest $request)
     {
         //
 
-        $costos=Precio_Unitario::create([
+        $costos=PrecioProducto::create([
             'idcliente' => $request->input('cliente_id'),
             'idproducto' => $request->input('producto_id'),
             'precio_unitario' => $request->input('precio'),

@@ -14,23 +14,20 @@ class VendedorController extends Controller
     public function index(){
 
          
-        $user=DB::table('users')
-        ->select('users.id', 'users.email')
-        ->join('roles', 'users.role_id', '=', 'roles.id')
-        ->where('users.role_id', 4)
-        ->get();
-        $vendedor=DB::table('vendedors')
-        ->select('vendedors.id','users.email', 'vendedors.rif', 'vendedors.direccion', 'vendedors.telefono' )
-        ->join('users', 'vendedors.user_id', '=', 'users.id')
-        ->get();
+      $vendedor=Vendedor::all();
+     /*    $vendedor=DB::table('vendedors')
+        ->select('vendedors.id', 'vendedors.rif', 'vendedors.direccion', 'vendedors.telefono' )
+       
+        ->get(); */
 
-        return view('admin.material.vendedores' , compact('vendedor', 'user'));
+
+        return view('admin.material.vendedores' , compact('vendedor'));
     }
 
     public function store(VendedorRequest $request){
        
         $vendedor = Vendedor::create([
-            "user_id" => $request->input('user_id'),
+           
             "nombre" => $request->input('nombre'),
             "apellido" => $request->input('apellido'),
             "rif" => $request->input('rif'),

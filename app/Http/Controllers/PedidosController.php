@@ -56,33 +56,37 @@ class PedidosController extends Controller
             $estado=Estado::all();
             $pedidos=DB::table('pedidos')
             ->join('item_pedidos', 'pedidos.nro_orden', '=', 'item_pedidos.id_detalle')
-            ->join('users', 'pedidos.user_id', '=', 'users.id')
+            ->join('clientes', 'pedidos.cliente_id', '=', 'clientes.id')
+            ->join('users', 'clientes.user_id', '=', 'users.id')
             ->select('pedidos.nro_orden','pedidos.sub_total', 'pedidos.created_at', 'pedidos.estado')
             ->where('users.id', auth()->user()->id)
             ->orderBy('pedidos.nro_orden')
             ->get();
 
-         /*    $pedidos2=DB::table('pedidos')
-            ->select('pedidos.created_at', 'sub_total', 'nro_orden', 'estado.nombre', 'users.email')
-            ->join('users', 'pedidos.user_id', '=', 'users.id')
+            $pedidos2=DB::table('pedidos')
+            ->select('pedidos.created_at', 'sub_total', 'nro_orden', 'estado.nombre')
+       
+            ->join('users', 'pedidos.cliente_id', '=', 'users.id')
             ->join('estado', 'pedidos.estado', '=', 'estado.id')
-            ->where('users.id', auth()->user()->id)
-            ->groupBy('pedidos.created_at', 'sub_total', 'nro_orden', 'estado.nombre', 'users.email')
+            ->where('pedidos.cliente_id', auth()->user()->id)
+            ->groupBy('pedidos.created_at', 'sub_total', 'nro_orden', 'estado.nombre')
             ->orderBy('nro_orden')
-            ->get(); */
+            ->get();
+         
 
 
             $pedidos3=DB::table('pedidos')
             ->select('pedidos.id','pedidos.created_at', 'sub_total', 'nro_orden', 'estado.nombre', 'users.email')
-            ->join('users', 'pedidos.user_id', '=', 'users.id')
+            ->join('users', 'pedidos.cliente_id', '=', 'users.id')
             ->join('estado', 'pedidos.estado', '=', 'estado.id')
             ->groupBy('pedidos.id','pedidos.created_at', 'sub_total', 'nro_orden', 'estado.nombre', 'users.email')
             ->orderBy('nro_orden')
             ->get();
+ 
 
+         
 
-           /*  dd($pedidos2); */
- /*    dd($pedidos);  */
+ 
         return view('admin.material.pedidos' , compact('pedidos', 'pedidos2', 'pedidos3', 'estado', 'tipopago', 'pedido')); 
      
     }
@@ -202,15 +206,16 @@ class PedidosController extends Controller
 
 
     public function mostrarOrden($nro_orden){
- 
+     
         $pedidos=DB::table('item_pedidos')
         ->join('productos', 'item_pedidos.idproducto', '=', 'productos.id')
         ->join('pedidos', 'item_pedidos.id_detalle', '=', 'pedidos.nro_orden')
-        ->join('users', 'users.id', '=', 'pedidos.user_id')
         ->join('tipo_pagos', 'tipo_pagos.id', '=', 'pedidos.tipopago_id')
-        ->select('pedidos.nro_orden', 'productos.nombre', 'item_pedidos.cantidad', 'item_pedidos.total', 
-        'productos.precio', 'pedidos.sub_total', 'pedidos.created_at', 'pedidos.estado', 'tipo_pagos.nombre as tnombre', 'users.razon_social', 
-        'users.rif', 'users.telefono', 'users.direccion')
+        ->join('clientes', 'item_pedidos.id_detalle', '=', 'clientes.id')
+        ->join('precio_producto', 'item_pedidos.id_detalle', '=', 'precio_producto.id')
+        ->select('pedidos.nro_orden', 'productos.nombre', 'item_pedidos.cantidad', 'precio_producto.precio_unitario',
+         'item_pedidos.total', 'pedidos.sub_total', 'pedidos.created_at', 'clientes.razon_social', 'clientes.rif',
+         'clientes.telefono', 'clientes.direccion', 'pedidos.estado', 'tipo_pagos.nombre as tnombre')
         ->where('pedidos.nro_orden', $nro_orden)
         ->orderBy('pedidos.nro_orden')
         ->get();

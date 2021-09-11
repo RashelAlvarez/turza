@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 use App\Producto;
 use App\Vendedor;
+use App\Estatus;
 use App\Notifications\Pedidos;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
@@ -38,22 +39,13 @@ class UsuarioController extends Controller
 
     public function index()
     {
-        // 
-     /* 
-        $user = User::all();
-        if($user->role_id=='3'){
-            return redirect()->route('admin.usuarios.usuario') ;
-        }else{
-            return redirect()->route('cliente.dashboard') ;
-            $datos['usuarios']=User::paginate(5);
-            
-        } */
-  /*       return view('admin.usuarios.usuario'); */
+      
   
         $users=User::all();
         $roles = Role::all();
-       /*  $productos=Producto::all(); */
+     
         $vendedor=Vendedor::all();
+       
         return view('admin.material.usuarios', compact('users', 'roles',  'vendedor'));
     }
 
@@ -84,30 +76,10 @@ class UsuarioController extends Controller
      */
     public function store(DatosUsuario $request)
     {
-        //
-/* 
-        dd($request->all()); */
-    /*     $user= User::create([
-           "role_id" => $request->input('role_id'),
-            "nombre" => $request->input('nombre'),
-            "apellido" => $request->input('apellido'),
-            "email" => $request->input('email'),
-            'password' => $request->input('password'),
-            'razon_social' => $request->input('razon_social'),
-            'rif' => $request->input('rif'),
-            'telefono' => $request->input('telefono'),
-            'direccion' => $request->input('direccion'), 
-          
-            'vendedor_id' => $request->input('vendedor_id'),
-            'file' => $request->file('file')->storeAs('rif', $request->file->getClientOriginalName()),
-            "created_at" => Carbon::now(),
-            "updated_at" => Carbon::now(),
-          
-        ]);   */ 
+
         $user= User::create([
             "role_id" => $request->input('role_id'),
-             /* "nombre" => $request->input('nombre'),
-             "apellido" => $request->input('apellido'), */
+       
              "email" => $request->input('email'),
              'password' => $request->input('password'),
        
