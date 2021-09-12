@@ -16,7 +16,10 @@
             <!-- Tab panes-->
             <div class="tab-content">
               <div class="tab-pane fade show active" id="tabs-4-1">
-                  <img class="receta" src="images/aperitivo3.png" alt=""/>
+                
+              
+                  <img class="img-fluid" src="images/aperitivo3.png" alt=""/>
+                
                 <p class="title">Ingredientes:</p>
                 <div class="text-center text-sm-left offset-top-30">
                   <ul class="row-16 list-0 list-custom list-marked list-marked-sm list-marked-secondary">

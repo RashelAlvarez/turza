@@ -21,11 +21,11 @@
                         </div>
                         </div>
                         <div class="unit-body">
-                        <h6 class="product-title"><a href="#">Aperitivos de bologna</a></h6>
+                        <h6 class="product-title"><a href="{{url('recetas')}}">Aperitivos de bologna</a></h6>
                         <div class="product-price-wrap">
                 
-                        </div><a class="button button-sm button-secondary button-ujarak" href="#">Detalle</a>
-                        </div>
+                        {{-- </div><a class="button button-sm button-secondary button-ujarak" href="{{url('recetas')}}">Detalle</a>
+                        </div> --}}
                     </div>
                     </article>
                 </div>
@@ -42,7 +42,7 @@
                         </div>
                         </div>
                         <div class="unit-body">
-                        <h6 class="product-title"><a href="#">Rollitos de Mortadela</a></h6>
+                        <h6 class="product-title"><a href="{{url('recetas')}}">Rollitos de Mortadela</a></h6>
                         <div class="product-price-wrap"> 
                 
                     </div>
@@ -61,7 +61,7 @@
                             </div>
                         </div>
                         <div class="unit-body">
-                            <h6 class="product-title"><a href="#">Mortadela Emparnizada</a></h6>
+                            <h6 class="product-title"><a href="{{url('recetas')}}">Mortadela Emparnizada</a></h6>
                             <div class="product-price-wrap"> 
                     
                         </div>
